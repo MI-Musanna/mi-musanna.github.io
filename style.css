@@ -300,3 +300,59 @@ main {
     font-size: 0.9rem;
     line-height: 1.6;
 }
+
+/* --- WHAT I'M DOING (BULLETPROOF VCARD LAYOUT) --- */
+.sub-title {
+    font-size: 1.5rem;
+    margin-bottom: 25px;
+    font-weight: 600;
+    margin-top: 40px;
+}
+
+/* 1. Reset the list so it doesn't show bullets */
+.vcard-grid {
+    list-style: none !important; 
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* This makes the 2 columns */
+    gap: 20px;
+}
+
+/* 2. Style the individual cards to look like the image */
+.vcard-item {
+    background: var(--bg-card); /* Uses the dark card color */
+    border: 1px solid var(--border);
+    border-radius: 14px; /* Rounded corners */
+    padding: 30px;
+    display: flex; /* Aligns icon next to text */
+    gap: 15px;
+    align-items: flex-start;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1); /* Subtle 3D look */
+}
+
+/* 3. The large icon styling */
+.vcard-icon {
+    font-size: 2.5rem;
+    color: var(--accent); /* Your Cyan */
+    margin-top: 5px; /* Aligns it perfectly with the title text */
+}
+
+/* 4. The text styling */
+.vcard-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.vcard-title {
+    font-size: 1.1rem;
+    margin-bottom: 7px;
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
+.vcard-text {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    line-height: 1.6;
+}
