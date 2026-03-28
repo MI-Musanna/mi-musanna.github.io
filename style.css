@@ -1,12 +1,11 @@
-/* Industrial vCard Theme - Refined Layout */
 :root {
-    --bg-main: #0b0b0b;
-    --bg-card: #121214;
-    --bg-navbar: #1e1e21;
-    --accent: #ffdb70; /* Using the gold accent from the reference for high-pro look */
-    --border: #383838;
+    --bg-main: #111111;      /* A softer black for the background */
+    --bg-card: #1e1e1f;      /* Slightly lighter gray for the cards */
+    --bg-navbar: #2b2b2c;    /* Distinct color for the navbar */
+    --accent: #00e5ff;       /* The new Electric Cyan color */
+    --border: #383838;       /* Softer borders */
     --text-primary: #fafafa;
-    --text-secondary: #d6d6d6;
+    --text-secondary: #b3b3b3;
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -22,41 +21,46 @@ body {
     padding: 20px;
 }
 
+/* * MAIN CONTAINER 
+ * align-items: flex-start prevents the sidebar from stretching vertically 
+ * to match the right side.
+ */
 main {
     display: flex;
     gap: 25px;
     width: 100%;
-    max-width: 1200px;
-    align-items: flex-start; /* Keeps sidebar from stretching */
+    max-width: 1150px;
+    align-items: flex-start; 
 }
 
-/* Sidebar - The "vCard" Look */
+/* --- SIDEBAR --- */
 .sidebar {
     background: var(--bg-card);
     border: 1px solid var(--border);
     border-radius: 20px;
     padding: 40px 30px;
     width: 280px;
-    position: sticky;
-    top: 20px;
     text-align: center;
 }
 
 .avatar-box {
     background: #2b2b2e;
-    height: 150px;
-    width: 150px;
+    height: 140px;
+    width: 140px;
     margin: 0 auto 20px;
-    border-radius: 30px;
+    border-radius: 30px; /* Softer rounded square */
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 3rem;
     color: var(--accent);
-    border: 1px solid var(--border);
+    /* Adds a subtle shadow to make it pop */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3); 
 }
 
-.name { font-size: 1.6rem; margin-bottom: 8px; font-weight: 600; }
+.name { font-size: 1.5rem; margin-bottom: 5px; font-weight: 600; letter-spacing: -0.5px; }
+.subtitle { color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 15px; }
+
 .badge { 
     background: #2b2b2e;
     color: var(--text-primary);
@@ -67,36 +71,60 @@ main {
     margin-bottom: 30px;
 }
 
+/* Sidebar Contact Info using Flexbox */
 .contact-info {
     text-align: left;
     border-top: 1px solid var(--border);
-    padding-top: 25px;
+    padding-top: 30px;
 }
 
-.info-item { margin-bottom: 20px; }
-.label { color: var(--text-secondary); font-size: 0.7rem; text-transform: uppercase; }
-.value { font-size: 0.9rem; color: var(--text-primary); margin-top: 3px; }
+.info-item { 
+    display: flex; 
+    align-items: center; 
+    gap: 15px; 
+    margin-bottom: 25px; 
+}
 
-/* Main Content Area */
+.icon-box {
+    background: #2b2b2e;
+    color: var(--accent);
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid var(--border);
+}
+
+.label { color: var(--text-secondary); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1px; }
+.value { font-size: 0.85rem; color: var(--text-primary); margin-top: 3px; font-weight: 500; }
+
+/* --- MAIN CONTENT --- */
 .main-content {
     flex: 1;
     background: var(--bg-card);
     border: 1px solid var(--border);
     border-radius: 20px;
-    padding: 40px;
+    padding: 50px; /* Increased padding so text has room to breathe */
     min-height: 75vh;
     position: relative;
 }
 
-/* Navigation Bar - Floating on the right */
+/* * NAVBAR FIX 
+ * Positioning it absolutely in the top right corner.
+ * We use border-radius to curve the bottom-left corner and match the top-right perfectly.
+ */
 .navbar {
     position: absolute;
     top: 0;
     right: 0;
     background: var(--bg-navbar);
-    border: 1px solid var(--border);
-    border-radius: 0 20px 0 20px;
-    padding: 0 20px;
+    border-bottom-left-radius: 20px;
+    border-top-right-radius: 20px;
+    padding: 0 30px;
+    border-bottom: 1px solid var(--border);
+    border-left: 1px solid var(--border);
 }
 
 .nav-list { display: flex; list-style: none; }
@@ -104,11 +132,11 @@ main {
     background: none;
     border: none;
     color: var(--text-secondary);
-    padding: 20px;
+    padding: 20px 15px;
     cursor: pointer;
-    font-size: 0.9rem;
-    font-weight: 500;
-    transition: 0.3s;
+    font-size: 0.95rem;
+    font-weight: 600;
+    transition: 0.3s ease; /* Smooth hover effect */
 }
 
 .nav-link:hover, .nav-link.active { color: var(--accent); }
@@ -116,11 +144,13 @@ main {
 /* Content Headings */
 .section-title { 
     font-size: 2rem; 
-    margin-bottom: 25px; 
+    margin-bottom: 30px; 
     position: relative;
     padding-bottom: 15px;
+    font-weight: 600;
 }
 
+/* The Cyan Underline beneath the title */
 .section-title::after {
     content: "";
     position: absolute;
