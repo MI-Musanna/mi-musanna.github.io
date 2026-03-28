@@ -115,6 +115,12 @@ main {
 }
 .social-links a { color: var(--text-secondary); text-decoration: none; font-size: 0.9rem; }
 .social-links a:hover { color: var(--accent); }
+.social-links a { 
+    color: var(--text-secondary); 
+    text-decoration: none; 
+    font-size: 1.4rem; /* Makes the icons a professional size */
+    transition: 0.3s ease;
+}
 
 
 /* --- MAIN CONTENT & EXACT NAVBAR MATCH --- */
