@@ -32,37 +32,40 @@
         </aside>
 
         <div class="main-content">
-            <nav class="navbar">
-                <ul class="nav-list">
-                    <li><button class="nav-link active">About</button></li>
-                    <li><button class="nav-link">Portfolio</button></li>
-                    <li><button class="nav-link">Contact</button></li>
-                </ul>
-            </nav>
+    <nav class="navbar">
+        <ul class="nav-list">
+            <li><button class="nav-link active" onclick="showSection('about')">About</button></li>
+            <li><button class="nav-link" onclick="showSection('portfolio')">Portfolio</button></li>
+            <li><button class="nav-link" onclick="showSection('contact')">Contact</button></li>
+        </ul>
+    </nav>
 
-            <section class="content-section">
-                <h2 class="section-title">About Me</h2>
-                <p class="about-text">
-                    I am a Computer Science & Technology student at Daffodil Polytechnic Institute. 
-                    I focus on building efficient Python scripts, managing open-source projects, 
-                    and creating high-impact digital content for MI Tech Arsenal.
-                </p>
+    <section id="about" class="content-section">
+        <h2 class="section-title">About Me</h2>
+        <p class="about-text">
+            I am a 2nd-semester CST student at Daffodil Polytechnic Institute. 
+            I focus on building efficient Python scripts and managing technical blogs.
+        </p>
+        </section>
 
-                <h3 class="sub-title">Core Arsenal</h3>
-                <div class="service-grid">
-                    <div class="service-card">
-                        <div class="card-icon">🐍</div>
-                        <h4>Python Dev</h4>
-                        <p>Logic-driven scripting and automation.</p>
-                    </div>
-                    <div class="service-card">
-                        <div class="card-icon">⚡</div>
-                        <h4>Web Systems</h4>
-                        <p>Building clean, responsive interfaces.</p>
-                    </div>
-                </div>
-            </section>
+    <section id="portfolio" class="content-section" style="display: none;">
+        <h2 class="section-title">My Projects</h2>
+        <div class="project-grid">
+            <div class="project-card">
+                <div class="project-type">Python / AI</div>
+                <h4>Yelena AI Assistant</h4>
+                <p>A custom RAG-based AI assistant built for personal productivity.</p>
+                <a href="#" class="view-link">View Source //</a>
+            </div>
+            <div class="project-card">
+                <div class="project-type">Web / Blog</div>
+                <h4>MI Tech Arsenal</h4>
+                <p>A professional blog focusing on open-source software and hardware.</p>
+                <a href="#" class="view-link">Visit Site //</a>
+            </div>
         </div>
+    </section>
+</div>
     </main>
 </body>
 </html>
