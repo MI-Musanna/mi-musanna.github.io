@@ -180,19 +180,21 @@ main {
     margin-bottom: 25px;
 }
 
-/* The invisible container for the list */
+/* Force removal of default browser lists and create space for the line */
 .timeline-list {
-    list-style: none;
-    padding-left: 55px; /* Makes room for the line and dots */
+    list-style: none !important;
+    padding: 0;
+    padding-left: 45px; /* Space for the vertical line */
     position: relative;
+    margin: 0;
 }
 
-/* The Vertical Line */
+/* The Vertical Connecting Line */
 .timeline-list::before {
     content: "";
     position: absolute;
     top: 0;
-    left: 22px; /* Centers the line under the icon box */
+    left: 18px; /* Centers the line exactly under the icon */
     width: 1px;
     height: 100%;
     background: var(--border);
@@ -208,18 +210,19 @@ main {
     content: "";
     position: absolute;
     top: 6px;
-    left: -37px; /* Pulls the dot over the vertical line */
+    left: -32px; /* Pulls the dot perfectly onto the line */
     width: 10px;
     height: 10px;
-    background: var(--accent); /* Electric Cyan */
+    background: var(--accent);
     border-radius: 50%;
-    box-shadow: 0 0 0 4px var(--bg-card); /* Creates the cut-out effect */
+    box-shadow: 0 0 0 4px var(--bg-card); /* Creates the cut-out ring effect */
+    z-index: 1; /* Ensures dot is above the line */
 }
 
 .timeline-item-title {
     font-size: 1.05rem;
     font-weight: 600;
-    margin-bottom: 5px;
+    margin-bottom: 7px;
     color: var(--text-primary);
 }
 
@@ -235,9 +238,4 @@ main {
     color: var(--text-secondary);
     font-size: 0.95rem;
     line-height: 1.6;
-}
-    to { 
-        opacity: 1; 
-        transform: translateY(0); /* Moves to original position */
-    }
 }
