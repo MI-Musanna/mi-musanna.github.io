@@ -301,7 +301,7 @@ main {
     line-height: 1.6;
 }
 
-/* --- WHAT I'M DOING (BULLETPROOF VCARD LAYOUT) --- */
+/* --- WHAT I'M DOING (PREMIUM VCARD LAYOUT) --- */
 .sub-title {
     font-size: 1.5rem;
     margin-bottom: 25px;
@@ -309,50 +309,59 @@ main {
     margin-top: 40px;
 }
 
-/* 1. Reset the list so it doesn't show bullets */
 .vcard-grid {
     list-style: none !important; 
     padding: 0;
     margin: 0;
     display: grid;
-    grid-template-columns: 1fr 1fr; /* This makes the 2 columns */
-    gap: 20px;
+    grid-template-columns: 1fr 1fr; 
+    gap: 25px; /* Increased gap for a less cluttered look */
 }
 
-/* 2. Style the individual cards to look like the image */
+/* The Premium Card Styling */
 .vcard-item {
-    background: var(--bg-card); /* Uses the dark card color */
-    border: 1px solid var(--border);
-    border-radius: 14px; /* Rounded corners */
-    padding: 30px;
-    display: flex; /* Aligns icon next to text */
-    gap: 15px;
+    /* Subtle gradient to make the card 'pop' off the background */
+    background: linear-gradient(to bottom right, #242426, #1e1e1f); 
+    /* Very soft, semi-transparent border instead of a harsh line */
+    border: 1px solid rgba(255, 255, 255, 0.05); 
+    border-radius: 16px; /* Slightly rounder */
+    padding: 30px; /* More breathing room inside the card */
+    display: flex; 
+    gap: 20px;
     align-items: flex-start;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1); /* Subtle 3D look */
+    /* Deep, soft shadow for a 3D floating effect */
+    box-shadow: 0 15px 35px -10px rgba(0, 0, 0, 0.4); 
+    transition: all 0.3s ease; 
 }
 
-/* 3. The large icon styling */
+/* The Hover Effect */
+.vcard-item:hover {
+    transform: translateY(-5px);
+    border: 1px solid var(--accent);
+    box-shadow: 0 15px 35px -10px rgba(0, 229, 255, 0.15); /* Cyan glow */
+}
+
 .vcard-icon {
-    font-size: 2.5rem;
-    color: var(--accent); /* Your Cyan */
-    margin-top: 5px; /* Aligns it perfectly with the title text */
+    font-size: 2.8rem; /* Made the icons slightly larger to match the original */
+    color: var(--accent); 
+    margin-top: 3px; 
 }
 
-/* 4. The text styling */
 .vcard-content {
     display: flex;
     flex-direction: column;
 }
 
 .vcard-title {
-    font-size: 1.1rem;
-    margin-bottom: 7px;
+    font-size: 1.15rem;
+    margin-bottom: 10px;
     color: var(--text-primary);
     font-weight: 600;
 }
 
 .vcard-text {
-    color: var(--text-secondary);
-    font-size: 0.9rem;
+    color: #b3b3b3; /* Softer grey text for a more elegant contrast */
+    font-size: 0.95rem;
     line-height: 1.6;
+    font-weight: 300; /* Lighter font weight looks more modern */
 }
