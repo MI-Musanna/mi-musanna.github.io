@@ -1,12 +1,11 @@
-/* --- CSS VARIABLES --- */
 :root {
-    --bg-main: #111111;      /* Deep background */
-    --bg-card: #1e1e1f;      /* Card background */
-    --bg-navbar: #2b2b2c;    /* Navbar background */
-    --accent: #00e5ff;       /* Electric Cyan */
-    --border: #383838;       /* Subtle borders */
+    --bg-main: #111111;
+    --bg-card: #1e1e1f;
+    --bg-navbar: #2b2b2c;
+    --accent: #00e5ff; /* Cyan instead of Gold */
+    --border: #383838;
     --text-primary: #fafafa;
-    --text-secondary: #b3b3b3;
+    --text-secondary: #d6d6d6;
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -14,7 +13,7 @@
 body {
     background-color: var(--bg-main);
     color: var(--text-primary);
-    font-family: 'Inter', sans-serif;
+    font-family: 'Poppins', sans-serif; /* Matched to original theme */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -22,136 +21,134 @@ body {
     padding: 20px;
 }
 
-/* --- MAIN CONTAINER --- */
 main {
     display: flex;
-    gap: 25px;
+    gap: 30px;
     width: 100%;
-    max-width: 1150px;
-    align-items: flex-start; /* Keeps sidebar from stretching */
+    max-width: 1200px;
+    align-items: flex-start;
 }
 
-/* --- SIDEBAR --- */
+/* --- SIDEBAR EXACT MATCH --- */
 .sidebar {
     background: var(--bg-card);
     border: 1px solid var(--border);
     border-radius: 20px;
-    padding: 40px 30px;
-    width: 290px; /* Slightly wider for full names */
-    text-align: center;
+    padding: 50px 30px; /* Matched the tall padding */
+    width: 280px;
+    display: flex;
+    flex-direction: column;
 }
 
+.profile-info { text-align: center; }
+
 .avatar-box {
-    background: #2b2b2e;
-    height: 140px;
-    width: 140px;
+    background: #333333;
+    height: 150px;
+    width: 150px;
     margin: 0 auto 20px;
     border-radius: 30px;
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 3rem;
-    color: var(--accent); /* Now Cyan */
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-    border: 1px solid var(--border);
+    color: var(--accent);
 }
 
-.name { 
-    font-size: 1.6rem; 
-    margin-bottom: 15px; 
-    font-weight: 700; 
-    letter-spacing: -0.5px; 
-}
+.name { font-size: 1.5rem; font-weight: 500; margin-bottom: 10px; }
 
 .badge { 
-    background: #2b2b2e;
+    background: #2b2b2c;
     color: var(--text-primary);
-    padding: 8px 15px;
+    padding: 5px 15px;
     font-size: 0.75rem;
     border-radius: 8px;
     display: inline-block;
-    margin-bottom: 30px;
-    font-weight: 500;
 }
 
-/* Sidebar Contact Info */
-.contact-info {
-    text-align: left;
-    border-top: 1px solid var(--border);
-    padding-top: 30px;
+.separator {
+    width: 100%;
+    height: 1px;
+    background: var(--border);
+    margin: 30px 0; /* Creates that specific gap */
 }
 
-.info-item { 
-    display: flex; 
-    align-items: center; 
-    gap: 15px; 
-    margin-bottom: 25px; 
-}
+/* Exact Contact Icon Layout */
+.contact-info { display: flex; flex-direction: column; gap: 30px; }
+
+.info-item { display: flex; align-items: center; gap: 15px; }
 
 .icon-box {
-    background: #2b2b2e;
-    color: var(--accent); /* Now Cyan */
-    width: 40px;
-    height: 40px;
-    border-radius: 10px;
+    background: #202022;
+    color: var(--accent);
+    width: 45px;
+    height: 45px;
+    border-radius: 12px;
     display: flex;
     justify-content: center;
     align-items: center;
     border: 1px solid var(--border);
-    font-size: 1.2rem;
+    box-shadow: -4px 4px 10px rgba(0,0,0,0.2); /* Soft inset shadow effect */
 }
 
 .info-text { display: flex; flex-direction: column; }
-.label { color: var(--text-secondary); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1px; }
-.value { font-size: 0.85rem; color: var(--text-primary); margin-top: 3px; font-weight: 500; }
+.label { color: var(--text-secondary); font-size: 0.7rem; text-transform: uppercase; }
+.value { font-size: 0.85rem; color: var(--text-primary); margin-top: 3px; }
 
-/* --- MAIN CONTENT --- */
+/* Social Icons */
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 40px;
+}
+.social-links a { color: var(--text-secondary); text-decoration: none; font-size: 0.9rem; }
+.social-links a:hover { color: var(--accent); }
+
+
+/* --- MAIN CONTENT & EXACT NAVBAR MATCH --- */
 .main-content {
     flex: 1;
     background: var(--bg-card);
     border: 1px solid var(--border);
     border-radius: 20px;
-    padding: 50px;
-    min-height: 75vh;
+    padding: 40px;
     position: relative;
+    min-height: 80vh;
 }
 
-/* --- NAVBAR --- */
 .navbar {
     position: absolute;
     top: 0;
     right: 0;
     background: var(--bg-navbar);
-    border-bottom-left-radius: 20px;
-    border-top-right-radius: 20px;
-    padding: 0 30px;
+    /* THE EXACT CORNER RADIUS FROM THE IMAGE */
+    border-radius: 0 20px 0 20px; 
     border-bottom: 1px solid var(--border);
     border-left: 1px solid var(--border);
+    padding: 0 20px;
 }
 
 .nav-list { display: flex; list-style: none; }
 .nav-link {
     background: none;
     border: none;
-    color: var(--text-secondary);
-    padding: 20px 15px;
+    color: var(--text-primary);
+    padding: 20px;
     cursor: pointer;
     font-size: 0.95rem;
-    font-weight: 600;
-    transition: 0.3s ease;
+    font-weight: 500;
 }
+.nav-link:hover, .nav-link.active { color: var(--accent); }
 
-.nav-link:hover, .nav-link.active { color: var(--accent); /* Now Cyan */ }
-
-/* --- CONTENT SECTIONS --- */
+/* About Me Title matching */
 .section-title { 
     font-size: 2rem; 
     margin-bottom: 30px; 
     position: relative;
-    padding-bottom: 15px;
-    font-weight: 700;
+    padding-bottom: 20px;
+    font-weight: 600;
 }
-
 .section-title::after {
     content: "";
     position: absolute;
@@ -159,19 +156,7 @@ main {
     left: 0;
     width: 40px;
     height: 5px;
-    background: var(--accent); /* Now Cyan */
+    background: var(--accent);
     border-radius: 10px;
 }
-
-.about-text {
-    line-height: 1.8;
-    color: var(--text-secondary);
-    font-size: 1rem;
-    margin-bottom: 40px;
-}
-
-.sub-title {
-    font-size: 1.4rem;
-    margin-bottom: 20px;
-    font-weight: 600;
-}
+.about-text { color: var(--text-secondary); line-height: 1.7; font-size: 0.95rem; }
