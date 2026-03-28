@@ -365,3 +365,78 @@ main {
     line-height: 1.6;
     font-weight: 300; /* Lighter font weight looks more modern */
 }
+
+/* --- MULTI-COLORED BADGES --- */
+.badge-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 30px;
+}
+
+.badge { 
+    padding: 6px 14px;
+    font-size: 0.75rem;
+    border-radius: 8px;
+    font-weight: 500;
+}
+
+/* Electric Cyan */
+.badge-primary { 
+    background: rgba(0, 229, 255, 0.1); 
+    color: #00e5ff; 
+    border: 1px solid rgba(0, 229, 255, 0.2); 
+}
+
+/* Soft Gold */
+.badge-secondary { 
+    background: rgba(255, 219, 112, 0.1); 
+    color: #ffdb70; 
+    border: 1px solid rgba(255, 219, 112, 0.2); 
+}
+
+/* Light Purple/Pink */
+.badge-tertiary { 
+    background: rgba(255, 118, 117, 0.1); 
+    color: #ff7675; 
+    border: 1px solid rgba(255, 118, 117, 0.2); 
+}
+
+
+/* --- MOBILE RESPONSIVENESS (SMARTPHONES & TABLETS) --- */
+@media (max-width: 1000px) {
+    main {
+        flex-direction: column; /* Stacks the sidebar on top */
+        align-items: center;
+        margin-top: 20px;
+    }
+    
+    .sidebar {
+        width: 100%;
+        max-width: 500px;
+    }
+    
+    .main-content {
+        width: 100%;
+    }
+    
+    .vcard-grid {
+        grid-template-columns: 1fr; /* Stacks the "What I'm Doing" cards */
+    }
+    
+    /* Adjusts the navbar for mobile */
+    .navbar {
+        position: relative;
+        border-radius: 20px;
+        border: 1px solid var(--border);
+        margin-bottom: 30px;
+        display: flex;
+        justify-content: center;
+    }
+    
+    .nav-list {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+}
