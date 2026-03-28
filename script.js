@@ -1,15 +1,39 @@
-function showSection(sectionId) {
-    // 1. Hide all sections
-    const sections = document.querySelectorAll('.content-section');
-    sections.forEach(sec => sec.style.display = 'none');
+// 1. Gather our tools (Select elements from the HTML DOM)
+// We find all buttons and all sections so we can manipulate them.
+const navButtons = document.querySelectorAll('.nav-link');
+const sections = document.querySelectorAll('.content-section');
 
-    // 2. Show the selected section
-    document.getElementById(sectionId).style.display = 'block';
-
-    // 3. Update active button state
-    const buttons = document.querySelectorAll('.nav-link');
-    buttons.forEach(btn => btn.classList.remove('active'));
+// 2. Loop through every single button
+navButtons.forEach(button => {
     
-    // Find the button that was clicked and make it blue
-    event.currentTarget.classList.add('active');
-}
+    // 3. Listen for a 'click' on each button
+    button.addEventListener('click', function() {
+        
+        // Find out WHICH button was clicked by reading its data-target
+        // Example: if we click Portfolio, targetId becomes 'portfolio'
+        const targetId = this.getAttribute('data-target');
+
+        // --- BUTTON STYLING ---
+        // First, remove the 'active' (cyan) color from all buttons
+        navButtons.forEach(btn => btn.classList.remove('active'));
+        
+        // Then, add the 'active' color ONLY to the button we just clicked
+        this.classList.add('active');
+
+        // --- CONTENT SWITCHING ---
+        // Loop through all our sections (About, Resume, Portfolio, etc.)
+        sections.forEach(section => {
+            
+            // If the section's ID matches the button's target, show it!
+            if (section.getAttribute('id') === targetId) {
+                section.style.display = 'block';
+                // Trigger a CSS animation for a smooth entrance
+                section.style.animation = 'fadeIn 0.5s ease forwards';
+            } 
+            // Otherwise, hide it.
+            else {
+                section.style.display = 'none';
+            }
+        });
+    });
+});
