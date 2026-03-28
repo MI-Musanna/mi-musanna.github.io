@@ -2,7 +2,7 @@
     --bg-main: #111111;
     --bg-card: #1e1e1f;
     --bg-navbar: #2b2b2c;
-    --accent: #00e5ff; /* Cyan instead of Gold */
+    --accent: #00e5ff;
     --border: #383838;
     --text-primary: #fafafa;
     --text-secondary: #d6d6d6;
@@ -16,7 +16,6 @@ body {
     font-family: 'Poppins', sans-serif;
     display: flex;
     justify-content: center;
-    /* Changed from center to flex-start so the top gap works */
     align-items: flex-start; 
     min-height: 100vh;
     padding: 20px;
@@ -28,16 +27,16 @@ main {
     width: 100%;
     max-width: 1200px;
     align-items: flex-start;
-    /* This creates the gap at the top you requested */
     margin-top: 60px; 
     margin-bottom: 60px;
 }
-/* --- SIDEBAR EXACT MATCH --- */
+
+/* --- SIDEBAR --- */
 .sidebar {
     background: var(--bg-card);
     border: 1px solid var(--border);
     border-radius: 20px;
-    padding: 50px 30px; /* Matched the tall padding */
+    padding: 50px 30px; 
     width: 280px;
     display: flex;
     flex-direction: column;
@@ -50,16 +49,13 @@ main {
     height: 150px;
     width: 150px;
     margin: 0 auto 20px;
-    /* 50% makes it a perfect circle! */
     border-radius: 50%; 
     display: flex;
     align-items: center;
     justify-content: center;
-    /* overflow hidden keeps the image locked inside the circle */
     overflow: hidden; 
 }
 
-/* This makes sure your photo fits the circle properly */
 .avatar-box img {
     width: 100%;
     height: 100%;
@@ -81,10 +77,10 @@ main {
     width: 100%;
     height: 1px;
     background: var(--border);
-    margin: 30px 0; /* Creates that specific gap */
+    margin: 30px 0; 
 }
 
-/* Exact Contact Icon Layout */
+/* Contact Info */
 .contact-info { display: flex; flex-direction: column; gap: 30px; }
 
 .info-item { display: flex; align-items: center; gap: 15px; }
@@ -99,7 +95,7 @@ main {
     justify-content: center;
     align-items: center;
     border: 1px solid var(--border);
-    box-shadow: -4px 4px 10px rgba(0,0,0,0.2); /* Soft inset shadow effect */
+    box-shadow: -4px 4px 10px rgba(0,0,0,0.2); 
 }
 
 .info-text { display: flex; flex-direction: column; }
@@ -113,17 +109,15 @@ main {
     gap: 15px;
     margin-top: 40px;
 }
-.social-links a { color: var(--text-secondary); text-decoration: none; font-size: 0.9rem; }
-.social-links a:hover { color: var(--accent); }
 .social-links a { 
     color: var(--text-secondary); 
     text-decoration: none; 
-    font-size: 1.4rem; /* Makes the icons a professional size */
+    font-size: 1.4rem; 
     transition: 0.3s ease;
 }
+.social-links a:hover { color: var(--accent); }
 
-
-/* --- MAIN CONTENT & EXACT NAVBAR MATCH --- */
+/* --- MAIN CONTENT & NAVBAR --- */
 .main-content {
     flex: 1;
     background: var(--bg-card);
@@ -139,7 +133,6 @@ main {
     top: 0;
     right: 0;
     background: var(--bg-navbar);
-    /* THE EXACT CORNER RADIUS FROM THE IMAGE */
     border-radius: 0 20px 0 20px; 
     border-bottom: 1px solid var(--border);
     border-left: 1px solid var(--border);
@@ -158,7 +151,7 @@ main {
 }
 .nav-link:hover, .nav-link.active { color: var(--accent); }
 
-/* About Me Title matching */
+/* Content Titles */
 .section-title { 
     font-size: 2rem; 
     margin-bottom: 30px; 
@@ -178,14 +171,20 @@ main {
 }
 .about-text { color: var(--text-secondary); line-height: 1.7; font-size: 0.95rem; }
 
-/* Smooth fade-in animation for switching tabs */
+/* --- THE ANIMATION FIX --- */
+/* This is now properly closed! */
 @keyframes fadeIn {
     from { 
         opacity: 0; 
-        transform: translateY(15px); /* Starts slightly lower */
+        transform: translateY(15px); 
     }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
 
-    /* --- RESUME TIMELINE --- */
+/* --- RESUME TIMELINE --- */
 .timeline {
     margin-bottom: 40px;
 }
@@ -197,21 +196,19 @@ main {
     margin-bottom: 25px;
 }
 
-/* Force removal of default browser lists and create space for the line */
 .timeline-list {
     list-style: none !important;
     padding: 0;
-    padding-left: 45px; /* Space for the vertical line */
+    padding-left: 45px; 
     position: relative;
     margin: 0;
 }
 
-/* The Vertical Connecting Line */
 .timeline-list::before {
     content: "";
     position: absolute;
     top: 0;
-    left: 18px; /* Centers the line exactly under the icon */
+    left: 18px; 
     width: 1px;
     height: 100%;
     background: var(--border);
@@ -222,18 +219,17 @@ main {
     margin-bottom: 30px;
 }
 
-/* The Glowing Cyan Dots */
 .timeline-item::before {
     content: "";
     position: absolute;
     top: 6px;
-    left: -32px; /* Pulls the dot perfectly onto the line */
+    left: -32px; 
     width: 10px;
     height: 10px;
     background: var(--accent);
     border-radius: 50%;
-    box-shadow: 0 0 0 4px var(--bg-card); /* Creates the cut-out ring effect */
-    z-index: 1; /* Ensures dot is above the line */
+    box-shadow: 0 0 0 4px var(--bg-card); 
+    z-index: 1; 
 }
 
 .timeline-item-title {
@@ -257,7 +253,6 @@ main {
     line-height: 1.6;
 }
 
-
 /* --- WHAT I'M DOING (SERVICE CARDS) --- */
 .sub-title {
     font-size: 1.5rem;
@@ -266,35 +261,31 @@ main {
     margin-top: 40px;
 }
 
-/* The 2x2 Grid Layout */
 .service-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr; /* Creates two columns */
+    grid-template-columns: 1fr 1fr; 
     gap: 20px;
 }
 
-/* The Box Design */
 .service-card {
-    background: #1e1e1f; /* Matches your sidebar color */
+    background: #1e1e1f; 
     border: 1px solid var(--border);
     border-radius: 14px;
     padding: 25px;
-    display: flex; /* Puts icon and text side-by-side */
+    display: flex; 
     gap: 20px;
     align-items: flex-start;
-    box-shadow: -4px 4px 10px rgba(0,0,0,0.1); /* Subtle shadow */
-    transition: 0.3s ease; /* Smooth hover animation */
+    box-shadow: -4px 4px 10px rgba(0,0,0,0.1); 
+    transition: 0.3s ease; 
 }
 
-/* Make it glow cyan when you hover over it */
 .service-card:hover {
     border-color: var(--accent);
 }
 
-/* Icon Sizing and Color */
 .card-icon {
-    font-size: 2.5rem; /* Makes the icons much bigger */
-    color: var(--accent); /* Electric Cyan */
+    font-size: 2.5rem; 
+    color: var(--accent); 
 }
 
 .card-text h4 {
@@ -309,4 +300,3 @@ main {
     font-size: 0.9rem;
     line-height: 1.6;
 }
-
