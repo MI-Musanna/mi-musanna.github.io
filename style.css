@@ -1,9 +1,10 @@
+/* --- CSS VARIABLES --- */
 :root {
-    --bg-main: #111111;      /* A softer black for the background */
-    --bg-card: #1e1e1f;      /* Slightly lighter gray for the cards */
-    --bg-navbar: #2b2b2c;    /* Distinct color for the navbar */
-    --accent: #00e5ff;       /* The new Electric Cyan color */
-    --border: #383838;       /* Softer borders */
+    --bg-main: #111111;      /* Deep background */
+    --bg-card: #1e1e1f;      /* Card background */
+    --bg-navbar: #2b2b2c;    /* Navbar background */
+    --accent: #00e5ff;       /* Electric Cyan */
+    --border: #383838;       /* Subtle borders */
     --text-primary: #fafafa;
     --text-secondary: #b3b3b3;
 }
@@ -21,16 +22,13 @@ body {
     padding: 20px;
 }
 
-/* * MAIN CONTAINER 
- * align-items: flex-start prevents the sidebar from stretching vertically 
- * to match the right side.
- */
+/* --- MAIN CONTAINER --- */
 main {
     display: flex;
     gap: 25px;
     width: 100%;
     max-width: 1150px;
-    align-items: flex-start; 
+    align-items: flex-start; /* Keeps sidebar from stretching */
 }
 
 /* --- SIDEBAR --- */
@@ -39,7 +37,7 @@ main {
     border: 1px solid var(--border);
     border-radius: 20px;
     padding: 40px 30px;
-    width: 280px;
+    width: 290px; /* Slightly wider for full names */
     text-align: center;
 }
 
@@ -48,30 +46,35 @@ main {
     height: 140px;
     width: 140px;
     margin: 0 auto 20px;
-    border-radius: 30px; /* Softer rounded square */
+    border-radius: 30px;
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 3rem;
-    color: var(--accent);
-    /* Adds a subtle shadow to make it pop */
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3); 
+    color: var(--accent); /* Now Cyan */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    border: 1px solid var(--border);
 }
 
-.name { font-size: 1.5rem; margin-bottom: 5px; font-weight: 600; letter-spacing: -0.5px; }
-.subtitle { color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 15px; }
+.name { 
+    font-size: 1.6rem; 
+    margin-bottom: 15px; 
+    font-weight: 700; 
+    letter-spacing: -0.5px; 
+}
 
 .badge { 
     background: #2b2b2e;
     color: var(--text-primary);
-    padding: 5px 15px;
+    padding: 8px 15px;
     font-size: 0.75rem;
     border-radius: 8px;
     display: inline-block;
     margin-bottom: 30px;
+    font-weight: 500;
 }
 
-/* Sidebar Contact Info using Flexbox */
+/* Sidebar Contact Info */
 .contact-info {
     text-align: left;
     border-top: 1px solid var(--border);
@@ -87,7 +90,7 @@ main {
 
 .icon-box {
     background: #2b2b2e;
-    color: var(--accent);
+    color: var(--accent); /* Now Cyan */
     width: 40px;
     height: 40px;
     border-radius: 10px;
@@ -95,8 +98,10 @@ main {
     justify-content: center;
     align-items: center;
     border: 1px solid var(--border);
+    font-size: 1.2rem;
 }
 
+.info-text { display: flex; flex-direction: column; }
 .label { color: var(--text-secondary); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1px; }
 .value { font-size: 0.85rem; color: var(--text-primary); margin-top: 3px; font-weight: 500; }
 
@@ -106,15 +111,12 @@ main {
     background: var(--bg-card);
     border: 1px solid var(--border);
     border-radius: 20px;
-    padding: 50px; /* Increased padding so text has room to breathe */
+    padding: 50px;
     min-height: 75vh;
     position: relative;
 }
 
-/* * NAVBAR FIX 
- * Positioning it absolutely in the top right corner.
- * We use border-radius to curve the bottom-left corner and match the top-right perfectly.
- */
+/* --- NAVBAR --- */
 .navbar {
     position: absolute;
     top: 0;
@@ -136,21 +138,20 @@ main {
     cursor: pointer;
     font-size: 0.95rem;
     font-weight: 600;
-    transition: 0.3s ease; /* Smooth hover effect */
+    transition: 0.3s ease;
 }
 
-.nav-link:hover, .nav-link.active { color: var(--accent); }
+.nav-link:hover, .nav-link.active { color: var(--accent); /* Now Cyan */ }
 
-/* Content Headings */
+/* --- CONTENT SECTIONS --- */
 .section-title { 
     font-size: 2rem; 
     margin-bottom: 30px; 
     position: relative;
     padding-bottom: 15px;
-    font-weight: 600;
+    font-weight: 700;
 }
 
-/* The Cyan Underline beneath the title */
 .section-title::after {
     content: "";
     position: absolute;
@@ -158,7 +159,7 @@ main {
     left: 0;
     width: 40px;
     height: 5px;
-    background: var(--accent);
+    background: var(--accent); /* Now Cyan */
     border-radius: 10px;
 }
 
@@ -166,4 +167,11 @@ main {
     line-height: 1.8;
     color: var(--text-secondary);
     font-size: 1rem;
+    margin-bottom: 40px;
+}
+
+.sub-title {
+    font-size: 1.4rem;
+    margin-bottom: 20px;
+    font-weight: 600;
 }
