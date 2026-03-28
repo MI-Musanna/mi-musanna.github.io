@@ -13,10 +13,11 @@
 body {
     background-color: var(--bg-main);
     color: var(--text-primary);
-    font-family: 'Poppins', sans-serif; /* Matched to original theme */
+    font-family: 'Poppins', sans-serif;
     display: flex;
     justify-content: center;
-    align-items: center;
+    /* Changed from center to flex-start so the top gap works */
+    align-items: flex-start; 
     min-height: 100vh;
     padding: 20px;
 }
@@ -27,8 +28,10 @@ main {
     width: 100%;
     max-width: 1200px;
     align-items: flex-start;
+    /* This creates the gap at the top you requested */
+    margin-top: 60px; 
+    margin-bottom: 60px;
 }
-
 /* --- SIDEBAR EXACT MATCH --- */
 .sidebar {
     background: var(--bg-card);
@@ -47,12 +50,20 @@ main {
     height: 150px;
     width: 150px;
     margin: 0 auto 20px;
-    border-radius: 30px;
+    /* 50% makes it a perfect circle! */
+    border-radius: 50%; 
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 3rem;
-    color: var(--accent);
+    /* overflow hidden keeps the image locked inside the circle */
+    overflow: hidden; 
+}
+
+/* This makes sure your photo fits the circle properly */
+.avatar-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
 }
 
 .name { font-size: 1.5rem; font-weight: 500; margin-bottom: 10px; }
