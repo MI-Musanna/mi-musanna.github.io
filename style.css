@@ -167,6 +167,75 @@ main {
         opacity: 0; 
         transform: translateY(15px); /* Starts slightly lower */
     }
+
+    /* --- RESUME TIMELINE --- */
+.timeline {
+    margin-bottom: 40px;
+}
+
+.timeline-title {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+/* The invisible container for the list */
+.timeline-list {
+    list-style: none;
+    padding-left: 55px; /* Makes room for the line and dots */
+    position: relative;
+}
+
+/* The Vertical Line */
+.timeline-list::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 22px; /* Centers the line under the icon box */
+    width: 1px;
+    height: 100%;
+    background: var(--border);
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 30px;
+}
+
+/* The Glowing Cyan Dots */
+.timeline-item::before {
+    content: "";
+    position: absolute;
+    top: 6px;
+    left: -37px; /* Pulls the dot over the vertical line */
+    width: 10px;
+    height: 10px;
+    background: var(--accent); /* Electric Cyan */
+    border-radius: 50%;
+    box-shadow: 0 0 0 4px var(--bg-card); /* Creates the cut-out effect */
+}
+
+.timeline-item-title {
+    font-size: 1.05rem;
+    font-weight: 600;
+    margin-bottom: 5px;
+    color: var(--text-primary);
+}
+
+.timeline-date {
+    color: var(--accent);
+    font-size: 0.85rem;
+    display: block;
+    margin-bottom: 12px;
+    font-weight: 500;
+}
+
+.timeline-text {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
     to { 
         opacity: 1; 
         transform: translateY(0); /* Moves to original position */
