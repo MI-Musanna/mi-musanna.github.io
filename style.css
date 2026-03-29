@@ -440,3 +440,86 @@ main {
         justify-content: center;
     }
 }
+
+/* --- MOBILE RESPONSIVENESS (SMARTPHONES & TABLETS) --- */
+@media (max-width: 1000px) {
+    /* 1. Prevent the bottom navbar from covering the page content */
+    body { padding-bottom: 80px; }
+    
+    main {
+        flex-direction: column; /* Stacks the UI vertically */
+        align-items: center;
+        margin-top: 10px;
+    }
+    
+    /* 2. Redesign the Sidebar Header */
+    .sidebar {
+        width: 100%;
+        position: relative;
+        padding: 30px;
+    }
+    
+    .sidebar-info {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+    }
+    
+    .avatar-box { width: 80px; height: 80px; margin: 0; }
+    .info-content { display: flex; flex-direction: column; align-items: flex-start; }
+    .name { font-size: 1.3rem; margin-bottom: 5px; }
+    .badge-container { margin-bottom: 0; justify-content: flex-start; }
+    
+    /* 3. Style the Toggle Button (Like your screenshot) */
+    .info_more-btn {
+        display: flex;
+        position: absolute;
+        top: 0;
+        right: 0;
+        background: var(--bg-navbar);
+        color: var(--accent); /* Cyan arrow */
+        border: 1px solid var(--border);
+        border-radius: 0 20px 0 20px;
+        padding: 15px;
+        font-size: 1.2rem;
+        cursor: pointer;
+        transition: 0.3s ease;
+    }
+    
+    /* Hide the text, only show the dropdown arrow icon */
+    .info_more-btn span { display: none; }
+    
+    /* 4. The Toggle Logic via CSS */
+    .sidebar-info_more {
+        display: none; /* Hidden by default on mobile */
+        opacity: 0;
+        animation: fadeIn 0.5s ease forwards; /* Uses our existing fade animation */
+    }
+    
+    .sidebar.active .sidebar-info_more {
+        display: block; /* Shows when JS adds the active class */
+    }
+    
+    /* 5. The Bottom Navigation Bar */
+    .navbar {
+        position: fixed; /* Locks it to the screen */
+        bottom: 0;
+        top: auto;
+        left: 0;
+        width: 100%;
+        border-radius: 20px 20px 0 0; /* Curves the top corners */
+        border: 1px solid var(--border);
+        border-bottom: none;
+        /* Glassmorphism background so you can see the page blur behind it */
+        background: rgba(43, 43, 44, 0.85); 
+        backdrop-filter: blur(10px); 
+        z-index: 1000;
+        padding: 0;
+    }
+    
+    .nav-list { width: 100%; justify-content: space-around; }
+    .nav-link { padding: 15px 10px; font-size: 0.85rem; }
+    
+    /* 6. Stack the "What I'm Doing" cards on small screens */
+    .vcard-grid { grid-template-columns: 1fr; }
+}
