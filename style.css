@@ -399,6 +399,70 @@ main {
     border: 1px solid rgba(255, 118, 117, 0.2); 
 }
 
+/* --- RESUME: SKILLS PROGRESS BARS --- */
+.skills-container {
+    margin-top: 40px;
+}
+
+.skills-list {
+    list-style: none;
+    padding: 0;
+}
+
+.skills-item {
+    margin-bottom: 25px;
+}
+
+/* Aligns the title and the percentage text on the same line */
+.title-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.skill-title {
+    font-size: 0.95rem;
+    color: var(--text-primary);
+    font-weight: 500;
+}
+
+.title-wrapper data {
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+    font-weight: 300;
+}
+
+/* The dark background track for the progress bar */
+.skill-progress-bg {
+    background: var(--bg-navbar); /* Uses your dark grey */
+    height: 8px;
+    width: 100%;
+    border-radius: 10px;
+    /* overflow: hidden ensures the bright fill doesn't spill out of the rounded corners */
+    overflow: hidden; 
+}
+
+/* The bright Cyan fill bar */
+.skill-progress-fill {
+    background: var(--accent);
+    height: 100%;
+    border-radius: 10px;
+    /* Adds a subtle glowing effect to the bar */
+    box-shadow: 0 0 10px rgba(0, 229, 255, 0.4);
+    
+    /* THE ANIMATION FIX */
+    /* We scale it from 0 to 1 so it looks like it's "growing" when the page loads */
+    transform-origin: left; 
+    animation: fillAnimation 1s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+/* The keyframe animation that makes it grow */
+@keyframes fillAnimation {
+    0% { transform: scaleX(0); }
+    100% { transform: scaleX(1); }
+}
+
 /* --- MOBILE RESPONSIVENESS (SMARTPHONES & TABLETS) --- */
 /* FIX: Consolidated the two competing media queries into ONE clean block */
 @media (max-width: 1000px) {
