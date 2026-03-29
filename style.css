@@ -128,7 +128,7 @@ main {
 }
 .social-links a:hover { color: var(--accent); }
 
-/* --- MAIN CONTENT & NAVBAR --- */
+/* --- MAIN CONTENT & NAVBAR (DESKTOP) --- */
 .main-content {
     flex: 1;
     background: var(--bg-card);
@@ -139,20 +139,17 @@ main {
     min-height: 80vh;
 }
 
+/* FIX: Restored the proper Desktop Top-Right Navbar */
 .navbar {
-        position: fixed; 
-        bottom: 0;
-        left: 0;
-        width: 100%;
-        margin: 0; /* FIX: Kills the inherited gap */
-        padding-bottom: env(safe-area-inset-bottom); /* FIX: Adapts to phone swipe bars */
-        border-radius: 20px 20px 0 0; 
-        border: 1px solid var(--border);
-        border-bottom: none;
-        background: rgba(43, 43, 44, 0.85); 
-        backdrop-filter: blur(10px); 
-        z-index: 1000;
-    }
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: var(--bg-navbar);
+    border-radius: 0 20px 0 20px;
+    border-bottom: 1px solid var(--border);
+    border-left: 1px solid var(--border);
+    padding: 0 20px;
+}
 
 .nav-list { display: flex; list-style: none; }
 .nav-link {
@@ -187,7 +184,6 @@ main {
 .about-text { color: var(--text-secondary); line-height: 1.7; font-size: 0.95rem; }
 
 /* --- THE ANIMATION FIX --- */
-/* This is now properly closed! */
 @keyframes fadeIn {
     from { 
         opacity: 0; 
@@ -317,47 +313,35 @@ main {
 }
 
 /* --- WHAT I'M DOING (PREMIUM VCARD LAYOUT) --- */
-.sub-title {
-    font-size: 1.5rem;
-    margin-bottom: 25px;
-    font-weight: 600;
-    margin-top: 40px;
-}
-
 .vcard-grid {
     list-style: none !important; 
     padding: 0;
     margin: 0;
     display: grid;
     grid-template-columns: 1fr 1fr; 
-    gap: 25px; /* Increased gap for a less cluttered look */
+    gap: 25px; 
 }
 
-/* The Premium Card Styling */
 .vcard-item {
-    /* Subtle gradient to make the card 'pop' off the background */
     background: linear-gradient(to bottom right, #242426, #1e1e1f); 
-    /* Very soft, semi-transparent border instead of a harsh line */
     border: 1px solid rgba(255, 255, 255, 0.05); 
-    border-radius: 16px; /* Slightly rounder */
-    padding: 30px; /* More breathing room inside the card */
+    border-radius: 16px; 
+    padding: 30px; 
     display: flex; 
     gap: 20px;
     align-items: flex-start;
-    /* Deep, soft shadow for a 3D floating effect */
     box-shadow: 0 15px 35px -10px rgba(0, 0, 0, 0.4); 
     transition: all 0.3s ease; 
 }
 
-/* The Hover Effect */
 .vcard-item:hover {
     transform: translateY(-5px);
     border: 1px solid var(--accent);
-    box-shadow: 0 15px 35px -10px rgba(0, 229, 255, 0.15); /* Cyan glow */
+    box-shadow: 0 15px 35px -10px rgba(0, 229, 255, 0.15); 
 }
 
 .vcard-icon {
-    font-size: 2.8rem; /* Made the icons slightly larger to match the original */
+    font-size: 2.8rem; 
     color: var(--accent); 
     margin-top: 3px; 
 }
@@ -375,10 +359,10 @@ main {
 }
 
 .vcard-text {
-    color: #b3b3b3; /* Softer grey text for a more elegant contrast */
+    color: #b3b3b3; 
     font-size: 0.95rem;
     line-height: 1.6;
-    font-weight: 300; /* Lighter font weight looks more modern */
+    font-weight: 300; 
 }
 
 /* --- MULTI-COLORED BADGES --- */
@@ -397,68 +381,28 @@ main {
     font-weight: 500;
 }
 
-/* Electric Cyan */
 .badge-primary { 
     background: rgba(0, 229, 255, 0.1); 
     color: #00e5ff; 
     border: 1px solid rgba(0, 229, 255, 0.2); 
 }
 
-/* Soft Gold */
 .badge-secondary { 
     background: rgba(255, 219, 112, 0.1); 
     color: #ffdb70; 
     border: 1px solid rgba(255, 219, 112, 0.2); 
 }
 
-/* Light Purple/Pink */
 .badge-tertiary { 
     background: rgba(255, 118, 117, 0.1); 
     color: #ff7675; 
     border: 1px solid rgba(255, 118, 117, 0.2); 
 }
 
-
 /* --- MOBILE RESPONSIVENESS (SMARTPHONES & TABLETS) --- */
+/* FIX: Consolidated the two competing media queries into ONE clean block */
 @media (max-width: 1000px) {
-    main {
-        flex-direction: column; /* Stacks the sidebar on top */
-        align-items: center;
-        margin-top: 20px;
-    }
-    
-    .sidebar {
-        width: 100%;
-        max-width: 500px;
-    }
-    
-    .main-content {
-        width: 100%;
-    }
-    
-    .vcard-grid {
-        grid-template-columns: 1fr; /* Stacks the "What I'm Doing" cards */
-    }
-    
-    /* Adjusts the navbar for mobile */
-    .navbar {
-        position: relative;
-        border-radius: 20px;
-        border: 1px solid var(--border);
-        margin-bottom: 30px;
-        display: flex;
-        justify-content: center;
-    }
-    
-    .nav-list {
-        flex-wrap: wrap;
-        justify-content: center;
-    }
-}
-
-/* --- MOBILE RESPONSIVENESS (SMARTPHONES & TABLETS) --- */
-@media (max-width: 1000px) {
-    /* 1. Prevent the bottom navbar from covering the page content */
+    /* Prevent the bottom navbar from covering the page content */
     body { padding-bottom: 80px; }
     
     main {
@@ -467,9 +411,10 @@ main {
         margin-top: 10px;
     }
     
-    /* 2. Redesign the Sidebar Header */
+    /* Redesign the Sidebar Header */
     .sidebar {
         width: 100%;
+        max-width: 500px;
         position: relative;
         padding: 30px;
     }
@@ -480,12 +425,16 @@ main {
         gap: 20px;
     }
     
+    .main-content {
+        width: 100%;
+    }
+    
     .avatar-box { width: 80px; height: 80px; margin: 0; }
     .info-content { display: flex; flex-direction: column; align-items: flex-start; }
     .name { font-size: 1.3rem; margin-bottom: 5px; }
     .badge-container { margin-bottom: 0; justify-content: flex-start; }
     
-    /* 3. Style the Toggle Button (Like your screenshot) */
+    /* Style the Toggle Button */
     .info_more-btn {
         display: flex;
         position: absolute;
@@ -504,37 +453,46 @@ main {
     /* Hide the text, only show the dropdown arrow icon */
     .info_more-btn span { display: none; }
     
-    /* 4. The Toggle Logic via CSS */
+    /* The Toggle Logic via CSS */
     .sidebar-info_more {
         display: none; /* Hidden by default on mobile */
         opacity: 0;
-        animation: fadeIn 0.5s ease forwards; /* Uses our existing fade animation */
+        animation: fadeIn 0.5s ease forwards;
     }
     
     .sidebar.active .sidebar-info_more {
         display: block; /* Shows when JS adds the active class */
     }
     
-    /* 5. The Bottom Navigation Bar */
+    /* The Bottom Navigation Bar (MOBILE ONLY) */
     .navbar {
         position: fixed; /* Locks it to the screen */
         bottom: 0;
-        top: auto;
+        top: auto; /* Overrides PC top setting */
+        right: auto; /* Overrides PC right setting */
         left: 0;
         width: 100%;
-        border-radius: 20px 20px 0 0; /* Curves the top corners */
+        margin: 0; 
+        padding: 0;
+        padding-bottom: env(safe-area-inset-bottom); /* FIX: Removes the gap at bottom */
+        border-radius: 20px 20px 0 0; 
         border: 1px solid var(--border);
         border-bottom: none;
-        /* Glassmorphism background so you can see the page blur behind it */
         background: rgba(43, 43, 44, 0.85); 
         backdrop-filter: blur(10px); 
         z-index: 1000;
-        padding: 0;
+        display: flex;
+        justify-content: center;
     }
     
-    .nav-list { width: 100%; justify-content: space-around; }
+    .nav-list { 
+        width: 100%; 
+        justify-content: space-around; 
+        flex-wrap: nowrap; /* Keeps items in one row */
+    }
+    
     .nav-link { padding: 15px 10px; font-size: 0.85rem; }
     
-    /* 6. Stack the "What I'm Doing" cards on small screens */
+    /* Stack the "What I'm Doing" cards on small screens */
     .vcard-grid { grid-template-columns: 1fr; }
 }
