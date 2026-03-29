@@ -43,6 +43,15 @@ main {
 }
 
 .info_more-btn { display: none; } /* Hidden on PC */
+/* Smoothly animates the arrow */
+.info_more-btn ion-icon {
+    transition: transform 0.3s ease;
+}
+
+/* Flips the arrow upside down when the sidebar is open */
+.sidebar.active .info_more-btn ion-icon {
+    transform: rotate(180deg);
+}
 
 .profile-info { text-align: center; }
 
@@ -131,15 +140,19 @@ main {
 }
 
 .navbar {
-    position: absolute;
-    top: 0;
-    right: 0;
-    background: var(--bg-navbar);
-    border-radius: 0 20px 0 20px; 
-    border-bottom: 1px solid var(--border);
-    border-left: 1px solid var(--border);
-    padding: 0 20px;
-}
+        position: fixed; 
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        margin: 0; /* FIX: Kills the inherited gap */
+        padding-bottom: env(safe-area-inset-bottom); /* FIX: Adapts to phone swipe bars */
+        border-radius: 20px 20px 0 0; 
+        border: 1px solid var(--border);
+        border-bottom: none;
+        background: rgba(43, 43, 44, 0.85); 
+        backdrop-filter: blur(10px); 
+        z-index: 1000;
+    }
 
 .nav-list { display: flex; list-style: none; }
 .nav-link {
