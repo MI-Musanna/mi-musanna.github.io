@@ -37,3 +37,14 @@ navButtons.forEach(button => {
         });
     });
 });
+
+// --- MOBILE SIDEBAR TOGGLE LOGIC ---
+const sidebar = document.getElementById('sidebar');
+const sidebarBtn = document.getElementById('sidebar-btn');
+
+sidebarBtn.addEventListener('click', function() {
+    // .toggle() adds the 'active' class if it's missing, and removes it if it's there
+    sidebar.classList.toggle('active');
+});
+
+
