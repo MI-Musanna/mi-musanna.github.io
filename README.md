@@ -1,4 +1,4 @@
-# Mahdi Islam | Professional Portfolio.sys ⚡
+# Mahdi Islam | Professional Portfolio ⚡
 
 [![Live Demo](https://img.shields.io/badge/Live_Website-View_Portfolio-00e5ff?style=for-the-badge)](https://mi-musanna.github.io)
 
