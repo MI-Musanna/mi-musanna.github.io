@@ -6,246 +6,57 @@
     <title>Mahdi Islam | Professional Portfolio</title>
     
     <link rel="icon" type="image/png" href="favicon.png">
-    <link rel="stylesheet" href="style.css?v=19">
+    <link rel="stylesheet" href="style.css?v=20">
     
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </head>
 <body>
 
-    <main>
-        <aside class="sidebar" id="sidebar">
-            <div class="sidebar-info">
-                <figure class="avatar-box">
-                    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEid8hbXuVk_kFVH8b9oOwC7MPyKTQkDokgCM6C0hoYIuniMR-0v_y12fc4XcKntvadYUaWc8z8vlO7Aw11t5MzZVLlvONiBuBTy0zPtiUBe8s1yehdNJp2kxu83vrGMGgAQ5GSJKGaehl6bZI7LvsZFjhJWPFprrC5M5pMr_D44MmYoSg/s1600/1000381358.png" alt="Mahdi Islam">
-                </figure>
+    <nav class="navbar">
+        <div class="logo">MI<span>.</span></div>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About & Skills</a></li>
+            <li><a href="#portfolio">Portfolio</a></li>
+            <li><a href="#contact" class="btn-contact">Contact Me</a></li>
+        </ul>
+    </nav>
 
-                <div class="info-content">
-                    <h1 class="name">Mahdi Islam</h1>
-                    <div class="badge-container">
-                        <span class="badge badge-primary">CST Student</span>
-                        <span class="badge badge-secondary">AI Developer</span>
-                        <span class="badge badge-tertiary">Tech Blogger</span>
-                    </div>
-                </div>
-
-                <button class="info_more-btn" id="sidebar-btn">
-                    <span>Show Contacts</span>
-                    <ion-icon name="chevron-down-outline"></ion-icon>
-                </button>
-            </div>
-
-            <div class="sidebar-info_more">
-                <div class="separator"></div>
-
-                <div class="contact-info">
-                    <div class="info-item">
-                        <div class="icon-box"><ion-icon name="mail-outline"></ion-icon></div>
-                        <div class="info-text">
-                            <p class="label">EMAIL</p>
-                            <p class="value">m2129090@gmail.com</p>
-                        </div>
-                    </div>
-                    
-                    <div class="info-item">
-                        <div class="icon-box"><ion-icon name="phone-portrait-outline"></ion-icon></div>
-                        <div class="info-text">
-                            <p class="label">PHONE</p>
-                            <p class="value">+880 1601162157</p>
-                        </div>
-                    </div>
-
-                    <div class="info-item">
-                        <div class="icon-box"><ion-icon name="calendar-outline"></ion-icon></div>
-                        <div class="info-text">
-                            <p class="label">BIRTHDAY</p>
-                            <p class="value">March 14, 2007</p>
-                        </div>
-                    </div>
-
-                    <div class="info-item">
-                        <div class="icon-box"><ion-icon name="location-outline"></ion-icon></div>
-                        <div class="info-text">
-                            <p class="label">LOCATION</p>
-                            <p class="value">Savar, Dhaka</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="social-links">
-                    <a href="https://www.facebook.com/musanna2007" aria-label="Facebook"><ion-icon name="logo-facebook"></ion-icon></a>
-                    <a href="https://t.me/NetHunter2007" aria-label="Telegram"><ion-icon name="paper-plane-outline"></ion-icon></a>
-                    <a href="https://www.youtube.com/@MITechArsenal" aria-label="YouTube"><ion-icon name="logo-youtube"></ion-icon></a>
-                </div>
-            </div>
-        </aside>
-
-        <div class="main-content">
-            
-            <nav class="navbar">
-                <ul class="nav-list">
-                    <li><button class="nav-link active" data-target="about">About</button></li>
-                    <li><button class="nav-link" data-target="resume">Resume</button></li>
-                    <li><button class="nav-link" data-target="portfolio">Portfolio</button></li>
-                    <li><button class="nav-link" data-target="blog">Blog</button></li>
-                    <li><button class="nav-link" data-target="contact">Contact</button></li>
-                </ul>
-            </nav>
-
-            <section class="content-section active" id="about">
-                <h2 class="section-title">About Me</h2>
-                <p class="about-text">
-                    I am a 2nd-semester student in Computer Science and Technology. I build custom AI systems, automate workflows with Python, and run the MI Tech Arsenal blog. I am driven by a passion for open-source tech, high-performance hardware, and clean web design.
-                </p>
-
-                <h3 class="sub-title">What I'm Doing</h3>
-                
-                <ul class="vcard-grid">
-                    <li class="vcard-item">
-                        <div class="vcard-icon"><ion-icon name="code-slash-outline"></ion-icon></div>
-                        <div class="vcard-content">
-                            <h4 class="vcard-title">Web Development</h4>
-                            <p class="vcard-text">Building clean, high-performance, and responsive professional websites from scratch.</p>
-                        </div>
-                    </li>
-                    <li class="vcard-item">
-                        <div class="vcard-icon"><ion-icon name="logo-python"></ion-icon></div>
-                        <div class="vcard-content">
-                            <h4 class="vcard-title">Python & AI Systems</h4>
-                            <p class="vcard-text">Developing custom RAG-based AI assistants and automating workflows with Python scripts.</p>
-                        </div>
-                    </li>
-                    <li class="vcard-item">
-                        <div class="vcard-icon"><ion-icon name="create-outline"></ion-icon></div>
-                        <div class="vcard-content">
-                            <h4 class="vcard-title">Tech Blogging</h4>
-                            <p class="vcard-text">Writing detailed articles on open-source software and tech tutorials for MI Tech Arsenal.</p>
-                        </div>
-                    </li>
-                    <li class="vcard-item">
-                        <div class="vcard-icon"><ion-icon name="hardware-chip-outline"></ion-icon></div>
-                        <div class="vcard-content">
-                            <h4 class="vcard-title">Hardware & OS</h4>
-                            <p class="vcard-text">Optimizing custom PC rigs and exploring advanced custom ROM environments.</p>
-                        </div>
-                    </li>
-                </ul>
-            </section>
-
-            <section class="content-section" id="resume" style="display: none;">
-                <h2 class="section-title">Resume</h2>
-
-                <div class="timeline">
-                    <div class="timeline-title">
-                        <div class="icon-box">🎓</div>
-                        <h3 class="sub-title" style="margin: 0;">Education</h3>
-                    </div>
-
-                    <ul class="timeline-list">
-                        <li class="timeline-item">
-                            <h4 class="timeline-item-title">Diploma in CST (2nd Semester)</h4>
-                            <span class="timeline-date">2026 — Present</span>
-                            <p class="timeline-text">
-                                Currently building a strong foundation in computer technology, software principles, and advanced digital workflows.
-                            </p>
-                        </li>
-                        
-                        <li class="timeline-item">
-                            <h4 class="timeline-item-title">Diploma in CST (1st Semester)</h4>
-                            <span class="timeline-date">Completed in 2026</span>
-                            <p class="timeline-text">
-                                Completed foundational coursework, transitioning into advanced technical studies.
-                            </p>
-                        </li>
-
-                        <li class="timeline-item">
-                            <h4 class="timeline-item-title">Secondary School Certificate (SSC)</h4>
-                            <span class="timeline-date">Completed in 2025</span>
-                            <p class="timeline-text">
-                                Graduated secondary education with a focus on analytical thinking and core sciences.
-                            </p>
-                        </li>
-                    </ul>
-                </div>
-                <div class="timeline">
-                    <div class="timeline-title">
-                        <div class="icon-box">💼</div>
-                        <h3 class="sub-title" style="margin: 0;">Experience</h3>
-                    </div>
-                    <ul class="timeline-list">
-                        <li class="timeline-item">
-                            <h4 class="timeline-item-title">Founder & Lead Developer</h4>
-                            <span class="timeline-date">2026 — Present</span>
-                            <p class="timeline-text">Running the "MI Tech Arsenal" blog. Researching and writing technical articles on open-source software, etc.</p>
-                        </li>
-                        <li class="timeline-item">
-                            <h4 class="timeline-item-title">AI Architect (Yelena Project)</h4>
-                            <span class="timeline-date">2026 — Present</span>
-                            <p class="timeline-text">Developing a custom RAG-based AI assistant using advanced Python scripting to automate workflows and enhance personal productivity.</p>
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="skills-container">
-                    <h3 class="sub-title">My Technical Stack</h3>
-                    <ul class="skills-list">
-                        <li class="skills-item">
-                            <div class="title-wrapper">
-                                <h5 class="skill-title">AI Tools & Prompt Engineering</h5>
-                                <data value="90">90%</data>
-                            </div>
-                            <div class="skill-progress-bg">
-                                <div class="skill-progress-fill" style="width: 90%;"></div>
-                            </div>
-                        </li>
-                        <li class="skills-item">
-                            <div class="title-wrapper">
-                                <h5 class="skill-title">Video Production (DaVinci Resolve, Filmora)</h5>
-                                <data value="75">75%</data>
-                            </div>
-                            <div class="skill-progress-bg">
-                                <div class="skill-progress-fill" style="width: 75%;"></div>
-                            </div>
-                        </li>
-                        <li class="skills-item">
-                            <div class="title-wrapper">
-                                <h5 class="skill-title">Graphic Design (Affinity, Canva)</h5>
-                                <data value="80">80%</data>
-                            </div>
-                            <div class="skill-progress-bg">
-                                <div class="skill-progress-fill" style="width: 80%;"></div>
-                            </div>
-                        </li>
-                        <li class="skills-item">
-                            <div class="title-wrapper">
-                                <h5 class="skill-title">Advanced Web Research & Troubleshooting</h5>
-                                <data value="95">95%</data>
-                            </div>
-                            <div class="skill-progress-bg">
-                                <div class="skill-progress-fill" style="width: 95%;"></div>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </section>
-
-            <section class="content-section" id="portfolio" style="display: none;">
-                <h2 class="section-title">Portfolio</h2>
-                <p class="about-text">Showcasing my custom Python tools like Yelena and web projects.</p>
-            </section>
-
-            <section class="content-section" id="blog" style="display: none;">
-                <h2 class="section-title">Blog</h2>
-                <p class="about-text">Latest open-source insights from MI Tech Arsenal.</p>
-            </section>
-
-            <section class="content-section" id="contact" style="display: none;">
-                <h2 class="section-title">Contact</h2>
-                <p class="about-text">Let's connect and build something.</p>
-            </section>
+    <section id="home" class="hero-section">
+        <div class="hero-content">
+            <p class="greeting">Hi, My Name is</p>
+            <h1 class="name">Mahdi Islam</h1>
+            <h3 class="title">CST Student & Tech Innovator</h3>
+            <p class="description">Currently diving deep into Python, AI integration, and modern web development. Building tech solutions from ground zero.</p>
+            <a href="#about" class="btn-primary">Learn More About Me</a>
         </div>
-    </main>
+        
+        <div class="hero-image-box">
+            <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEid8hbXuVk_kFVH8b9oOwC7MPyKTQkDokgCM6C0hoYIuniMR-0v_y12fc4XcKntvadYUaWc8z8vlO7Aw11t5MzZVLlvONiBuBTy0zPtiUBe8s1yehdNJp2kxu83vrGMGgAQ5GSJKGaehl6bZI7LvsZFjhJWPFprrC5M5pMr_D44MmYoSg/s1600/1000381358.png" alt="Mahdi Islam" class="hero-img">
+            <div class="location-badge">
+                <ion-icon name="location-outline"></ion-icon> Savar, Dhaka
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="about-section">
+        <div class="glass-card">
+            <h2 class="section-heading">About Me</h2>
+            <p class="about-text">I am a 2nd-semester student in Computer Science and Technology. I build custom AI systems, automate workflows with Python, and run the MI Tech Arsenal blog. I focus on creating efficient logic, automation scripts, and minimalist UI designs. Driven by a passion for open-source tech, high-performance hardware, and clean web design.</p>
+            
+            <h3 class="sub-heading">Technical Stack & Skills</h3>
+            <div class="skills-grid">
+                <div class="skill-badge"><ion-icon name="logo-python"></ion-icon> Python Automation</div>
+                <div class="skill-badge"><ion-icon name="hardware-chip-outline"></ion-icon> RAG AI Systems</div>
+                <div class="skill-badge"><ion-icon name="logo-javascript"></ion-icon> Web Dev (JS/HTML/CSS)</div>
+                <div class="skill-badge"><ion-icon name="create-outline"></ion-icon> Tech Blogging</div>
+                <div class="skill-badge"><ion-icon name="film-outline"></ion-icon> Video Production</div>
+                <div class="skill-badge"><ion-icon name="color-palette-outline"></ion-icon> Graphic Design</div>
+            </div>
+        </div>
+    </section>
 
     <script src="script.js"></script>
 </body>
