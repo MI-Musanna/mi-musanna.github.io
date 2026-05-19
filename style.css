@@ -163,9 +163,22 @@ body {
 /* --- LOCKED SKILLS STYLING --- */
 .skill-badge.locked {
     background: rgba(255, 255, 255, 0.02);
-    border: 1px dashed rgba(255, 255, 255, 0.15);
-    color: #555555;
+    border: 1px dashed rgba(255, 255, 255, 0.25); /* Border slightly more visible */
+    color: #888888; /* Brighter grey for readability */
     cursor: not-allowed;
+}
+
+/* Removes the cyan hover effect for locked items */
+.skill-badge.locked:hover {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.4);
+    transform: none;
+    box-shadow: none;
+}
+
+/* Dims the lock icon to match text */
+.skill-badge.locked ion-icon {
+    color: #888888;
 }
 
 /* Removes the cyan hover effect for locked items */
