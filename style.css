@@ -142,6 +142,7 @@ body {
     margin-top: 30px;
 }
 
+/* --- ACTIVE SKILLS STYLING --- */
 .skill-badge {
     background: rgba(255, 255, 255, 0.03);
     border: 1px solid rgba(255, 255, 255, 0.1);
@@ -171,24 +172,27 @@ body {
     box-shadow: 0 8px 25px rgba(0, 229, 255, 0.2);
 }
 
-/* --- LOCKED SKILLS STYLING (FIXED POSITION) --- */
+/* --- LOCKED SKILLS STYLING (OVERLAY) --- */
 .skill-badge.locked {
     position: relative;
     background: rgba(255, 255, 255, 0.02);
     border: 1px dashed rgba(255, 255, 255, 0.15);
-    color: #888888;
+    color: #444444; /* Text is deeply dimmed to show it's locked */
     cursor: not-allowed;
     box-shadow: none;
-    /* Extra padding on right to keep text perfectly centered without overlapping the icon */
-    padding: 16px 40px 16px 24px; 
+    overflow: hidden;
+    padding: 16px 24px; 
 }
 
-/* Pins the lock icon to the far right side of the box */
+/* Forces the ion-icon to sit dead center OVER the text */
 .skill-badge.locked ion-icon {
     position: absolute;
-    right: 20px;
-    color: #555555;
-    font-size: 1.1rem;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 2rem; /* Large icon to act as an overlay */
+    color: rgba(255, 255, 255, 0.25); /* Semi-transparent white lock over the dark text */
+    z-index: 10;
 }
 
 .skill-badge.locked:hover {
