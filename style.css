@@ -160,38 +160,38 @@ body {
     box-shadow: 0 5px 15px rgba(0, 229, 255, 0.15);
 }
 
-/* --- LOCKED SKILLS STYLING --- */
+/* --- LOCKED SKILLS STYLING (UPDATED) --- */
 .skill-badge.locked {
+    position: relative;
     background: rgba(255, 255, 255, 0.02);
-    border: 1px dashed rgba(255, 255, 255, 0.25); /* Border slightly more visible */
-    color: #888888; /* Brighter grey for readability */
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #666;
     cursor: not-allowed;
+    overflow: hidden;
 }
 
-/* Removes the cyan hover effect for locked items */
+/* This adds the lock icon OVER the whole badge */
+.skill-badge.locked::after {
+    content: "🔒"; /* তুমি চাইলে এখানে ion-icon ও দিতে পারো */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 1.5rem;
+    opacity: 0.3;
+}
+
+/* Dim the content behind the lock */
+.skill-badge.locked ion-icon, 
+.skill-badge.locked {
+    filter: grayscale(1);
+    opacity: 0.6;
+}
+
 .skill-badge.locked:hover {
-    background: rgba(255, 255, 255, 0.05);
-    border-color: rgba(255, 255, 255, 0.4);
     transform: none;
     box-shadow: none;
-}
-
-/* Dims the lock icon to match text */
-.skill-badge.locked ion-icon {
-    color: #888888;
-}
-
-/* Removes the cyan hover effect for locked items */
-.skill-badge.locked:hover {
-    background: rgba(255, 255, 255, 0.04);
-    border-color: rgba(255, 255, 255, 0.2);
-    transform: none;
-    box-shadow: none;
-}
-
-/* Dims the lock icon */
-.skill-badge.locked ion-icon {
-    color: #555555;
+    background: rgba(255, 255, 255, 0.02);
 }
 
 /* --- MOBILE RESPONSIVENESS --- */
