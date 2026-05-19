@@ -19,11 +19,14 @@ As a Computer Science and Technology (CST) student, I wanted a portfolio that re
 * **Vanilla JavaScript:** Event listeners and DOM traversal for tab-switching logic.
 * **Ionicons:** Professional vector graphics for UI elements.
 
-## 👨‍💻 About the Developer
-I am **Mahdi Islam**, a 2nd-semester CST student specializing in:
-* **Python Automation & AI:** Architecting custom RAG-based AI assistants (Project: *Yelena*).
-* **Hardware & OS:** Optimizing custom PC rigs and exploring advanced custom ROM environments (YAAP).
-* **Technical Writing:** Founder and lead author of the *MI Tech Arsenal* blog, focusing on open-source software and hardware tuning.
+## 👨‍💻 About Me
+I am **Mahdi Islam**, a 2nd-semester Computer Science and Technology (CST) student currently at the beginning of my technical journey. I am documenting my growth from the ground up, focusing on building a solid foundation rather than claiming false expertise.
+
+### My Learning Path & Exploration
+* **Coding & Logic:** Currently focusing on Python basics and understanding the fundamentals of programming logic.
+* **AI Exploration:** Experimenting with AI-assisted workflows and learning how to effectively leverage prompt engineering for problem-solving.
+* **Content Creation:** Learning the ropes of digital content creation using tools like Canva and Filmora.
+* **Tech Enthusiast:** Deeply interested in hardware tuning, PC rig optimization, and exploring advanced software environments.
 
 ---
 *Built with 💻 and ☕ by Mahdi Islam.*
