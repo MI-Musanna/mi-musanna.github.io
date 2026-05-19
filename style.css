@@ -171,17 +171,24 @@ body {
     box-shadow: 0 8px 25px rgba(0, 229, 255, 0.2);
 }
 
-/* --- LOCKED SKILLS STYLING (PURE VECTOR NO EMOJI) --- */
+/* --- LOCKED SKILLS STYLING (FIXED POSITION) --- */
 .skill-badge.locked {
+    position: relative;
     background: rgba(255, 255, 255, 0.02);
     border: 1px dashed rgba(255, 255, 255, 0.15);
     color: #888888;
     cursor: not-allowed;
     box-shadow: none;
+    /* Extra padding on right to keep text perfectly centered without overlapping the icon */
+    padding: 16px 40px 16px 24px; 
 }
 
+/* Pins the lock icon to the far right side of the box */
 .skill-badge.locked ion-icon {
-    color: #666666; /* ভেক্টর আইকনের কালার ডার্ক করা হলো */
+    position: absolute;
+    right: 20px;
+    color: #555555;
+    font-size: 1.1rem;
 }
 
 .skill-badge.locked:hover {
