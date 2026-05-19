@@ -210,3 +210,139 @@ body {
     .glass-card { padding: 40px 20px; }
     .hero-img { width: 250px; height: 250px; }
 }
+
+/* --- PORTFOLIO SECTION --- */
+.portfolio-section {
+    padding: 100px 10%;
+}
+
+.text-center {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.portfolio-container {
+    display: flex;
+    gap: 50px;
+    align-items: flex-start;
+}
+
+/* --- SIDEBAR FILTERS --- */
+.portfolio-sidebar {
+    flex: 1;
+    min-width: 200px;
+    border-right: 1px solid rgba(255, 255, 255, 0.1);
+    padding-right: 20px;
+}
+
+.portfolio-filters {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.portfolio-filters li {
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    cursor: pointer;
+    transition: 0.3s;
+    font-weight: 500;
+}
+
+.portfolio-filters li:hover,
+.portfolio-filters li.active {
+    color: var(--cyan);
+}
+
+/* --- PORTFOLIO GRID --- */
+.portfolio-grid {
+    flex: 3;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 200px);
+    gap: 20px;
+}
+
+.portfolio-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 20px;
+}
+
+.portfolio-card:hover {
+    border-color: var(--cyan);
+    transform: translateY(-5px);
+    box-shadow: 0 5px 20px rgba(0, 229, 255, 0.15);
+}
+
+.portfolio-content h3 {
+    font-size: 1.2rem;
+    color: var(--text-main);
+    margin-bottom: 10px;
+}
+
+.portfolio-content p {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-bottom: 15px;
+}
+
+.project-link {
+    display: inline-block;
+    color: var(--cyan);
+    font-size: 1.5rem;
+    transition: 0.3s;
+}
+
+.project-link:hover {
+    transform: scale(1.2);
+}
+
+/* Empty Placeholder Boxes */
+.portfolio-card.empty {
+    border: 1px dashed rgba(255, 255, 255, 0.1);
+    background: transparent;
+}
+
+.portfolio-card.empty:hover {
+    transform: none;
+    border-color: rgba(255, 255, 255, 0.2);
+    box-shadow: none;
+    cursor: not-allowed;
+}
+
+/* --- RESPONSIVE PORTFOLIO --- */
+@media (max-width: 900px) {
+    .portfolio-container {
+        flex-direction: column;
+    }
+    .portfolio-sidebar {
+        border-right: none;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        padding-bottom: 20px;
+        width: 100%;
+    }
+    .portfolio-filters {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .portfolio-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .portfolio-grid {
+        grid-template-columns: 1fr;
+    }
+}
