@@ -117,7 +117,7 @@ body {
 }
 .location-badge ion-icon { color: var(--cyan); font-size: 1.2rem; }
 
-/* --- ABOUT & SKILLS (THE GLASS CARD) --- */
+/* --- ABOUT & SKILLS --- */
 .about-section { padding: 50px 10% 100px; }
 
 .glass-card {
@@ -131,7 +131,6 @@ body {
 
 .section-heading { font-size: 2.5rem; margin-bottom: 25px; font-weight: 600; }
 .about-text { color: var(--text-muted); max-width: 800px; margin: 0 auto 50px; font-size: 1.05rem; line-height: 1.8; }
-
 .sub-heading { font-size: 1.8rem; margin-bottom: 30px; color: var(--cyan); font-weight: 500; }
 
 .skills-grid {
@@ -142,7 +141,6 @@ body {
     margin-top: 30px;
 }
 
-/* --- ACTIVE SKILLS STYLING --- */
 .skill-badge {
     background: rgba(255, 255, 255, 0.03);
     border: 1px solid rgba(255, 255, 255, 0.1);
@@ -160,10 +158,7 @@ body {
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
-.skill-badge ion-icon {
-    font-size: 1.2rem;
-    color: var(--cyan);
-}
+.skill-badge ion-icon { font-size: 1.2rem; color: var(--cyan); }
 
 .skill-badge:hover {
     background: rgba(0, 229, 255, 0.08);
@@ -172,65 +167,47 @@ body {
     box-shadow: 0 8px 25px rgba(0, 229, 255, 0.2);
 }
 
-/* --- LOCKED SKILLS STYLING (PERFECT WATERMARK OVERLAY) --- */
 .skill-badge.locked {
     position: relative;
     background: rgba(255, 255, 255, 0.02);
     border: 1px dashed rgba(255, 255, 255, 0.15);
-    color: #4a4a4a; /* Text is dimmed out to look locked */
+    color: #4a4a4a; 
     cursor: not-allowed;
     box-shadow: none;
-    overflow: hidden; /* Ensures the lock icon doesn't break the border */
+    overflow: hidden;
 }
 
-/* This forces the ion-icon to sit dead center OVER the text */
 .skill-badge.locked ion-icon {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    font-size: 2.5rem; /* Big overlay icon */
-    color: rgba(255, 255, 255, 0.12); /* Semi-transparent watermark */
+    font-size: 2.5rem; 
+    color: rgba(255, 255, 255, 0.12); 
     z-index: 5;
-    pointer-events: none; /* Allows hovering/clicking through the icon */
+    pointer-events: none; 
 }
 
 .skill-badge.locked:hover {
     transform: none;
     background: rgba(255, 255, 255, 0.02);
     border-color: rgba(255, 255, 255, 0.15);
-    box-shadow: none;
-}
-
-/* --- MOBILE RESPONSIVENESS --- */
-@media (max-width: 900px) {
-    .hero-section { flex-direction: column-reverse; text-align: center; padding-top: 120px; gap: 40px; }
-    .hero-content { max-width: 100%; }
-    .nav-links { display: none; }
-    .glass-card { padding: 40px 20px; }
-    .hero-img { width: 250px; height: 250px; }
 }
 
 /* --- PORTFOLIO SECTION --- */
-.portfolio-section {
-    padding: 100px 10%;
-}
-
-.text-center {
-    text-align: center;
-    margin-bottom: 50px;
-}
+.portfolio-section { padding: 50px 10%; }
+.text-center { text-align: center; margin-bottom: 50px; }
 
 .portfolio-container {
     display: flex;
-    gap: 50px;
+    gap: 40px;
     align-items: flex-start;
 }
 
 /* --- SIDEBAR FILTERS --- */
 .portfolio-sidebar {
     flex: 1;
-    min-width: 200px;
+    min-width: 180px;
     border-right: 1px solid rgba(255, 255, 255, 0.1);
     padding-right: 20px;
 }
@@ -239,11 +216,11 @@ body {
     list-style: none;
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 25px;
 }
 
 .portfolio-filters li {
-    font-size: 1.1rem;
+    font-size: 1.05rem;
     color: var(--text-muted);
     cursor: pointer;
     transition: 0.3s;
@@ -255,27 +232,29 @@ body {
     color: var(--cyan);
 }
 
-/* --- PORTFOLIO GRID --- */
+/* --- PORTFOLIO GRID AREA --- */
+.portfolio-right-area {
+    flex: 4;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .portfolio-grid {
-    flex: 3;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(2, 200px);
-    gap: 20px;
+    grid-gap: 25px;
+    width: 100%;
 }
 
 .portfolio-card {
     background: rgba(255, 255, 255, 0.03);
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 12px;
-    position: relative;
     overflow: hidden;
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 20px;
+    flex-direction: column;
 }
 
 .portfolio-card:hover {
@@ -284,33 +263,38 @@ body {
     box-shadow: 0 5px 20px rgba(0, 229, 255, 0.15);
 }
 
-.portfolio-content h3 {
-    font-size: 1.2rem;
-    color: var(--text-main);
-    margin-bottom: 10px;
+.portfolio-thumb {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
-.portfolio-content p {
-    font-size: 0.85rem;
-    color: var(--text-muted);
-    margin-bottom: 15px;
+.portfolio-content {
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.portfolio-content h3 {
+    font-size: 1.1rem;
+    color: var(--text-main);
+    font-weight: 500;
 }
 
 .project-link {
-    display: inline-block;
     color: var(--cyan);
-    font-size: 1.5rem;
+    font-size: 1.3rem;
     transition: 0.3s;
 }
 
-.project-link:hover {
-    transform: scale(1.2);
-}
+.project-link:hover { transform: scale(1.2); }
 
-/* Empty Placeholder Boxes */
 .portfolio-card.empty {
     border: 1px dashed rgba(255, 255, 255, 0.1);
     background: transparent;
+    height: 220px; /* Placeholder height */
 }
 
 .portfolio-card.empty:hover {
@@ -320,29 +304,85 @@ body {
     cursor: not-allowed;
 }
 
-/* --- RESPONSIVE PORTFOLIO --- */
+/* --- PORTFOLIO PAGINATION (SLIDER DOTS) --- */
+.portfolio-pagination {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 40px;
+}
+
+.page-arrow {
+    color: var(--text-muted);
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.page-arrow:hover { color: var(--cyan); }
+
+.dot {
+    width: 8px;
+    height: 8px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.dot.active, .dot:hover {
+    background: var(--cyan);
+    transform: scale(1.2);
+}
+
+/* --- FLOATING RIGHT BAR --- */
+.floating-right-bar {
+    position: fixed;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.03);
+    border-left: 1px solid rgba(255, 255, 255, 0.1);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 20px 15px;
+    border-radius: 16px 0 0 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    z-index: 1000;
+    backdrop-filter: blur(10px);
+}
+
+.floating-right-bar a {
+    color: var(--text-muted);
+    font-size: 1.4rem;
+    transition: 0.3s;
+    display: flex;
+    justify-content: center;
+}
+
+.floating-right-bar a:hover {
+    color: var(--cyan);
+    transform: scale(1.1);
+}
+
+/* --- MOBILE RESPONSIVENESS --- */
 @media (max-width: 900px) {
-    .portfolio-container {
-        flex-direction: column;
-    }
-    .portfolio-sidebar {
-        border-right: none;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        padding-bottom: 20px;
-        width: 100%;
-    }
-    .portfolio-filters {
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: center;
-    }
-    .portfolio-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
+    .hero-section { flex-direction: column-reverse; text-align: center; padding-top: 120px; gap: 40px; }
+    .hero-content { max-width: 100%; }
+    .nav-links { display: none; }
+    .glass-card { padding: 40px 20px; }
+    .hero-img { width: 250px; height: 250px; }
+    
+    .portfolio-container { flex-direction: column; }
+    .portfolio-sidebar { border-right: none; border-bottom: 1px solid rgba(255, 255, 255, 0.1); padding-bottom: 20px; width: 100%; }
+    .portfolio-filters { flex-direction: row; flex-wrap: wrap; justify-content: center; }
+    .portfolio-grid { grid-template-columns: repeat(2, 1fr); }
+    .floating-right-bar { display: none; } /* Mobile e hide thakbe */
 }
 
 @media (max-width: 600px) {
-    .portfolio-grid {
-        grid-template-columns: 1fr;
-    }
+    .portfolio-grid { grid-template-columns: 1fr; }
 }
