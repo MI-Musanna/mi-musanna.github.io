@@ -176,19 +176,15 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    padding-right: 40px;
 }
 
 .skill-badge.locked::after {
     content: "🔒"; 
     position: absolute;
-    top: 10px;
-    right: 10px;
-    font-size: 0.9rem;
-    opacity: 0.4;
-}
-
-.skill-badge.locked {
-    opacity: 1 !important;
+    right: 15px;
+    font-size: 0.7rem;
+    opacity: 0.3;
 }
 
 .skill-badge.locked:hover {
