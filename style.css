@@ -160,6 +160,27 @@ body {
     box-shadow: 0 5px 15px rgba(0, 229, 255, 0.15);
 }
 
+/* --- LOCKED SKILLS STYLING --- */
+.skill-badge.locked {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px dashed rgba(255, 255, 255, 0.15);
+    color: #555555;
+    cursor: not-allowed;
+}
+
+/* Removes the cyan hover effect for locked items */
+.skill-badge.locked:hover {
+    background: rgba(255, 255, 255, 0.04);
+    border-color: rgba(255, 255, 255, 0.2);
+    transform: none;
+    box-shadow: none;
+}
+
+/* Dims the lock icon */
+.skill-badge.locked ion-icon {
+    color: #555555;
+}
+
 /* --- MOBILE RESPONSIVENESS --- */
 @media (max-width: 900px) {
     .hero-section { flex-direction: column-reverse; text-align: center; padding-top: 120px; gap: 40px; }
