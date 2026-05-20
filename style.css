@@ -351,7 +351,7 @@ body {
     display: flex;
     flex-direction: column;
     gap: 25px;
-    z-index: 1000;
+    z-index: 9999; /* Ensure it stays on top */
     backdrop-filter: blur(10px);
 }
 
@@ -369,7 +369,7 @@ body {
 }
 
 /* ========================================= */
-/* --- MOBILE RESPONSIVENESS (SURGICAL FIX) --- */
+/* --- MOBILE RESPONSIVENESS (FIXED) --- */
 /* ========================================= */
 
 @media (max-width: 900px) {
@@ -379,48 +379,54 @@ body {
     .glass-card { padding: 40px 20px; }
     .hero-img { width: 250px; height: 250px; }
     
-    .portfolio-section { padding: 50px 5%; }
+    /* FIX: Added huge bottom padding so floating nav doesn't overlap content */
+    .portfolio-section { padding: 50px 5% 120px 5%; }
+    
     .portfolio-container { flex-direction: column; gap: 20px; }
     .portfolio-sidebar { border-right: none; padding-right: 0; width: 100%; }
     
-    /* FIX: Scrollable filters for Mobile */
     .portfolio-filters { 
         flex-direction: row; 
         flex-wrap: nowrap; 
-        overflow-x: auto; /* Allows side scrolling */
+        overflow-x: auto; 
         justify-content: flex-start;
         gap: 15px;
         padding-bottom: 10px;
-        -ms-overflow-style: none;  /* IE and Edge */
-        scrollbar-width: none;  /* Firefox */
+        -ms-overflow-style: none;
+        scrollbar-width: none;
     }
-    .portfolio-filters::-webkit-scrollbar { display: none; /* Hide scrollbar for Chrome/Safari */ }
+    .portfolio-filters::-webkit-scrollbar { display: none; }
     .portfolio-filters li { white-space: nowrap; font-size: 0.95rem; }
     
     .portfolio-grid { grid-template-columns: repeat(2, 1fr); gap: 15px;}
     
-    /* FIX: Floating Bar converts to Floating Bottom Nav on Mobile */
+    /* FIX: Floating Nav positioning centered and anchored perfectly */
     .floating-right-bar {
         top: auto;
-        bottom: 25px;
-        right: 50%;
-        transform: translateX(50%); /* Center it perfectly */
+        bottom: 20px;
+        left: 50%; /* Anchor to left 50% */
+        right: auto;
+        transform: translateX(-50%); /* Pull back exactly half its width */
         flex-direction: row;
         border-radius: 30px;
         border: 1px solid rgba(255, 255, 255, 0.1);
-        padding: 12px 30px;
+        padding: 12px 35px;
         width: auto;
         gap: 30px;
         background: rgba(10, 10, 10, 0.95);
+        box-shadow: 0 10px 30px rgba(0,0,0,0.8); /* Shadow to separate from background */
     }
 }
 
 @media (max-width: 600px) {
-    /* FIX: Portfolio grid single column, and reduce empty box height */
     .portfolio-grid { grid-template-columns: 1fr; }
-    .portfolio-card.empty { height: 120px; } 
+    
+    /* FIX: Make empty cards much slimmer on mobile so they don't look like giant empty holes */
+    .portfolio-card.empty { height: 80px; } 
 
-    /* FIX: Skills Grid strictly 2 columns on Mobile */
+    /* FIX: Push pagination up a bit to clear the nav bar */
+    .portfolio-pagination { margin-top: 30px; margin-bottom: 20px; }
+
     .skills-grid {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
