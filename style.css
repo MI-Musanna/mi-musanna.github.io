@@ -351,7 +351,7 @@ body {
     display: flex;
     flex-direction: column;
     gap: 25px;
-    z-index: 9999; /* Ensure it stays on top */
+    z-index: 9999; 
     backdrop-filter: blur(10px);
 }
 
@@ -379,7 +379,6 @@ body {
     .glass-card { padding: 40px 20px; }
     .hero-img { width: 250px; height: 250px; }
     
-    /* FIX: Added huge bottom padding so floating nav doesn't overlap content */
     .portfolio-section { padding: 50px 5% 120px 5%; }
     
     .portfolio-container { flex-direction: column; gap: 20px; }
@@ -398,15 +397,12 @@ body {
     .portfolio-filters::-webkit-scrollbar { display: none; }
     .portfolio-filters li { white-space: nowrap; font-size: 0.95rem; }
     
-    .portfolio-grid { grid-template-columns: repeat(2, 1fr); gap: 15px;}
-    
-    /* FIX: Floating Nav positioning centered and anchored perfectly */
     .floating-right-bar {
         top: auto;
         bottom: 20px;
-        left: 50%; /* Anchor to left 50% */
+        left: 50%; 
         right: auto;
-        transform: translateX(-50%); /* Pull back exactly half its width */
+        transform: translateX(-50%); 
         flex-direction: row;
         border-radius: 30px;
         border: 1px solid rgba(255, 255, 255, 0.1);
@@ -414,17 +410,43 @@ body {
         width: auto;
         gap: 30px;
         background: rgba(10, 10, 10, 0.95);
-        box-shadow: 0 10px 30px rgba(0,0,0,0.8); /* Shadow to separate from background */
+        box-shadow: 0 10px 30px rgba(0,0,0,0.8); 
     }
 }
 
 @media (max-width: 600px) {
-    .portfolio-grid { grid-template-columns: 1fr; }
+    /* FIX: Showcases in 2 columns and centered */
+    .portfolio-grid { 
+        grid-template-columns: repeat(2, 1fr); 
+        gap: 12px; 
+    }
     
-    /* FIX: Make empty cards much slimmer on mobile so they don't look like giant empty holes */
-    .portfolio-card.empty { height: 80px; } 
+    /* FIX: Adjust thumbnail height for smaller 2-column cards */
+    .portfolio-thumb {
+        height: 90px;
+    }
+    
+    /* FIX: Stack text and icon vertically to save horizontal space */
+    .portfolio-content {
+        padding: 12px 8px;
+        flex-direction: column;
+        justify-content: center;
+        gap: 8px;
+    }
+    
+    .portfolio-content h3 {
+        font-size: 0.85rem;
+        text-align: center;
+    }
+    
+    .project-link {
+        font-size: 1.1rem;
+        align-self: center;
+    }
 
-    /* FIX: Push pagination up a bit to clear the nav bar */
+    /* Keep empty cards proportional to the new 2-column size */
+    .portfolio-card.empty { height: 140px; } 
+
     .portfolio-pagination { margin-top: 30px; margin-bottom: 20px; }
 
     .skills-grid {
