@@ -294,7 +294,7 @@ body {
 .portfolio-card.empty {
     border: 1px dashed rgba(255, 255, 255, 0.1);
     background: transparent;
-    height: 220px; /* Placeholder height */
+    height: 220px; 
 }
 
 .portfolio-card.empty:hover {
@@ -304,7 +304,7 @@ body {
     cursor: not-allowed;
 }
 
-/* --- PORTFOLIO PAGINATION (SLIDER DOTS) --- */
+/* --- PORTFOLIO PAGINATION --- */
 .portfolio-pagination {
     display: flex;
     align-items: center;
@@ -368,7 +368,10 @@ body {
     transform: scale(1.1);
 }
 
-/* --- MOBILE RESPONSIVENESS --- */
+/* ========================================= */
+/* --- MOBILE RESPONSIVENESS (SURGICAL FIX) --- */
+/* ========================================= */
+
 @media (max-width: 900px) {
     .hero-section { flex-direction: column-reverse; text-align: center; padding-top: 120px; gap: 40px; }
     .hero-content { max-width: 100%; }
@@ -376,13 +379,60 @@ body {
     .glass-card { padding: 40px 20px; }
     .hero-img { width: 250px; height: 250px; }
     
-    .portfolio-container { flex-direction: column; }
-    .portfolio-sidebar { border-right: none; border-bottom: 1px solid rgba(255, 255, 255, 0.1); padding-bottom: 20px; width: 100%; }
-    .portfolio-filters { flex-direction: row; flex-wrap: wrap; justify-content: center; }
-    .portfolio-grid { grid-template-columns: repeat(2, 1fr); }
-    .floating-right-bar { display: none; } /* Mobile e hide thakbe */
+    .portfolio-section { padding: 50px 5%; }
+    .portfolio-container { flex-direction: column; gap: 20px; }
+    .portfolio-sidebar { border-right: none; padding-right: 0; width: 100%; }
+    
+    /* FIX: Scrollable filters for Mobile */
+    .portfolio-filters { 
+        flex-direction: row; 
+        flex-wrap: nowrap; 
+        overflow-x: auto; /* Allows side scrolling */
+        justify-content: flex-start;
+        gap: 15px;
+        padding-bottom: 10px;
+        -ms-overflow-style: none;  /* IE and Edge */
+        scrollbar-width: none;  /* Firefox */
+    }
+    .portfolio-filters::-webkit-scrollbar { display: none; /* Hide scrollbar for Chrome/Safari */ }
+    .portfolio-filters li { white-space: nowrap; font-size: 0.95rem; }
+    
+    .portfolio-grid { grid-template-columns: repeat(2, 1fr); gap: 15px;}
+    
+    /* FIX: Floating Bar converts to Floating Bottom Nav on Mobile */
+    .floating-right-bar {
+        top: auto;
+        bottom: 25px;
+        right: 50%;
+        transform: translateX(50%); /* Center it perfectly */
+        flex-direction: row;
+        border-radius: 30px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        padding: 12px 30px;
+        width: auto;
+        gap: 30px;
+        background: rgba(10, 10, 10, 0.95);
+    }
 }
 
 @media (max-width: 600px) {
+    /* FIX: Portfolio grid single column, and reduce empty box height */
     .portfolio-grid { grid-template-columns: 1fr; }
+    .portfolio-card.empty { height: 120px; } 
+
+    /* FIX: Skills Grid strictly 2 columns on Mobile */
+    .skills-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+    
+    .skill-badge {
+        padding: 12px 10px;
+        font-size: 0.85rem;
+        gap: 8px;
+    }
+    
+    .skill-badge.locked ion-icon { font-size: 2rem; }
+    .skill-badge ion-icon { font-size: 1rem; }
 }
