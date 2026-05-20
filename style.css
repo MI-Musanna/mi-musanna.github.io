@@ -238,6 +238,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 100%;
 }
 
 .portfolio-grid {
@@ -369,7 +370,7 @@ body {
 }
 
 /* ========================================= */
-/* --- MOBILE RESPONSIVENESS (FIXED) --- */
+/* --- MOBILE RESPONSIVENESS --- */
 /* ========================================= */
 
 @media (max-width: 900px) {
@@ -415,37 +416,37 @@ body {
 }
 
 @media (max-width: 600px) {
-    /* FIX: Showcases in 2 columns and centered */
+    /* FIXED: Better proportions for 2-column mobile layout */
     .portfolio-grid { 
         grid-template-columns: repeat(2, 1fr); 
-        gap: 12px; 
+        gap: 14px; 
+        width: 100%;
     }
     
-    /* FIX: Adjust thumbnail height for smaller 2-column cards */
+    /* FIXED: Increased height from 90px to 125px to fix the 'too small' issue */
     .portfolio-thumb {
-        height: 90px;
+        height: 125px;
     }
     
-    /* FIX: Stack text and icon vertically to save horizontal space */
     .portfolio-content {
-        padding: 12px 8px;
+        padding: 12px 10px;
         flex-direction: column;
         justify-content: center;
-        gap: 8px;
+        gap: 6px;
     }
     
     .portfolio-content h3 {
-        font-size: 0.85rem;
+        font-size: 0.9rem;
         text-align: center;
     }
     
     .project-link {
-        font-size: 1.1rem;
+        font-size: 1.15rem;
         align-self: center;
     }
 
-    /* Keep empty cards proportional to the new 2-column size */
-    .portfolio-card.empty { height: 140px; } 
+    /* Adjusted empty cards to match active ones */
+    .portfolio-card.empty { height: 180px; } 
 
     .portfolio-pagination { margin-top: 30px; margin-bottom: 20px; }
 
