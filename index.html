@@ -3,10 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mahdi Islam | Professional Portfolio</title>
     
+    <title>Mahdi Islam | Professional Portfolio</title>
+    <meta name="title" content="Mahdi Islam | CST Student & Tech Innovator">
+    <meta name="description" content="I am a 2nd-semester CST student. Building tech solutions from ground zero. Explore my AI projects, automation scripts, and minimalist web designs.">
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://mi-musanna.github.io/">
+    <meta property="og:title" content="Mahdi Islam | Professional Portfolio">
+    <meta property="og:description" content="I am a 2nd-semester CST student. Building tech solutions from ground zero. Explore my AI projects, automation scripts, and minimalist web designs.">
+    <meta property="og:image" content="https://mi-musanna.github.io/assets/your-preview-image.jpg">
+
     <link rel="icon" type="image/png" href="favicon.png">
-    <link rel="stylesheet" href="style.css?v=20">
+    <link rel="stylesheet" href="style.css?v=21">
     
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
@@ -30,7 +39,10 @@
             <h1 class="name">Mahdi Islam</h1>
             <h3 class="title">CST Student & Tech Innovator</h3>
             <p class="description">Currently diving deep into Python, AI integration, and modern web development. Building tech solutions from ground zero.</p>
-            <a href="#about" class="btn-primary">Learn More About Me</a>
+            <div class="hero-buttons">
+                <a href="#about" class="btn-primary">Learn More About Me</a>
+                <a href="assets/Mahdi_Islam_CV.pdf" download class="btn-secondary">Download CV <ion-icon name="download-outline"></ion-icon></a>
+            </div>
         </div>
         
         <div class="hero-image-box">
@@ -47,18 +59,18 @@
             <p class="about-text">I am a 2nd-semester student in Computer Science and Technology. I build custom AI systems, automate workflows with Python, and run the MI Tech Arsenal blog. I focus on creating efficient logic, automation scripts, and minimalist UI designs. Driven by a passion for open-source tech, high-performance hardware, and clean web design.</p>
             
             <h3 class="sub-heading">Technical Stack & Skills</h3>
-           <div class="skills-grid">
-    <div class="skill-badge"><ion-icon name="code-slash-outline"></ion-icon> Vibe Coding</div>
-    <div class="skill-badge"><ion-icon name="logo-python"></ion-icon> Python Basics</div>
-    <div class="skill-badge"><ion-icon name="film-outline"></ion-icon> Filmora Video Editing</div>
-    <div class="skill-badge"><ion-icon name="color-palette-outline"></ion-icon> Canva Photo Editing</div>
-    <div class="skill-badge"><ion-icon name="create-outline"></ion-icon> Tech Blogging</div>
-    
-    <div class="skill-badge locked"><ion-icon name="lock-closed-outline"></ion-icon> Advanced AI</div>
-    <div class="skill-badge locked"><ion-icon name="lock-closed-outline"></ion-icon> Davinci Resolve Editing</div>
-    <div class="skill-badge locked"><ion-icon name="lock-closed-outline"></ion-icon> Affinity Photo Editing</div>
-    <div class="skill-badge locked"><ion-icon name="lock-closed-outline"></ion-icon> App Development</div>
-</div>
+            <div class="skills-grid">
+                <div class="skill-badge"><ion-icon name="code-slash-outline"></ion-icon> Vibe Coding</div>
+                <div class="skill-badge"><ion-icon name="logo-python"></ion-icon> Python Basics</div>
+                <div class="skill-badge"><ion-icon name="film-outline"></ion-icon> Filmora Video Editing</div>
+                <div class="skill-badge"><ion-icon name="color-palette-outline"></ion-icon> Canva Photo Editing</div>
+                <div class="skill-badge"><ion-icon name="create-outline"></ion-icon> Tech Blogging</div>
+                
+                <div class="skill-badge locked"><ion-icon name="lock-closed-outline"></ion-icon> Advanced AI</div>
+                <div class="skill-badge locked"><ion-icon name="lock-closed-outline"></ion-icon> Davinci Resolve Editing</div>
+                <div class="skill-badge locked"><ion-icon name="lock-closed-outline"></ion-icon> Affinity Photo Editing</div>
+                <div class="skill-badge locked"><ion-icon name="lock-closed-outline"></ion-icon> App Development</div>
+            </div>
         </div>
     </section>
 
@@ -113,10 +125,10 @@
     </section>
 
     <div class="floating-right-bar">
-        <a href="#home"><ion-icon name="home-outline"></ion-icon></a>
-        <a href="#about"><ion-icon name="person-outline"></ion-icon></a>
+        <a href="#home" title="Home"><ion-icon name="home-outline"></ion-icon></a>
+        <a href="#about" title="About Me"><ion-icon name="person-outline"></ion-icon></a>
         <a href="https://github.com/MI-Musanna" target="_blank" title="My GitHub"><ion-icon name="logo-github"></ion-icon></a>
-        <a href="#contact"><ion-icon name="call-outline"></ion-icon></a>
+        <a href="#contact" title="Contact"><ion-icon name="call-outline"></ion-icon></a>
     </div>
 
     <section id="contact" class="about-section contact-section">
@@ -130,31 +142,32 @@
                         <span>hello.musanna@proton.me</span>
                     </div>
                     <div class="info-item">
-                        <ion-icon name="logo-facebook"></ion-icon>
-                        <a href="https://www.facebook.com/musanna2007" target="_blank" class="contact-link">Mahdi Islam</a>
+                        <ion-icon name="call-outline"></ion-icon>
+                        <span>+880 1XXX-XXXXXX</span>
                     </div>
                     
                     <h3 style="margin-top: 40px;">Social Handles</h3>
                     <div class="social-icons">
-                        <a href="https://github.com/MI-Musanna" target="_blank" title="GitHub Profile"><ion-icon name="logo-github"></ion-icon></a>
+                        <a href="https://github.com/MI-Musanna" target="_blank" title="GitHub"><ion-icon name="logo-github"></ion-icon></a>
+                        <a href="https://www.facebook.com/musanna2007" target="_blank" title="Facebook"><ion-icon name="logo-facebook"></ion-icon></a>
                         <a href="https://t.me/NetHunter2007" target="_blank" title="Telegram"><ion-icon name="paper-plane"></ion-icon></a>
                         <a href="https://discord.com/users/1034487057067810871" target="_blank" title="Discord"><ion-icon name="logo-discord"></ion-icon></a>
                         <a href="https://pin.it/7FfK4JqTc" target="_blank" title="Pinterest"><ion-icon name="logo-pinterest"></ion-icon></a>
                     </div>
                 </div>
                 
-                <form class="contact-form" onsubmit="event.preventDefault();">
+                <form class="contact-form" action="https://formspree.io/f/YOUR_FORM_ID_HERE" method="POST">
                     <div class="form-group">
                         <label>Name</label>
-                        <input type="text" placeholder="Your Name" required>
+                        <input type="text" name="name" placeholder="Your Name" required>
                     </div>
                     <div class="form-group">
                         <label>Email</label>
-                        <input type="email" placeholder="Your Email" required>
+                        <input type="email" name="email" placeholder="Your Email" required>
                     </div>
                     <div class="form-group">
                         <label>Message</label>
-                        <textarea rows="5" placeholder="Your Message" required></textarea>
+                        <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
                     </div>
                     <button type="submit" class="btn-submit">Send</button>
                 </form>
