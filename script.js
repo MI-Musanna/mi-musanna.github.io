@@ -1,50 +1,73 @@
-// 1. Gather our tools (Select elements from the HTML DOM)
-// We find all buttons and all sections so we can manipulate them.
-const navButtons = document.querySelectorAll('.nav-link');
-const sections = document.querySelectorAll('.content-section');
+document.addEventListener('DOMContentLoaded', () => {
 
-// 2. Loop through every single button
-navButtons.forEach(button => {
-    
-    // 3. Listen for a 'click' on each button
-    button.addEventListener('click', function() {
-        
-        // Find out WHICH button was clicked by reading its data-target
-        // Example: if we click Portfolio, targetId becomes 'portfolio'
-        const targetId = this.getAttribute('data-target');
+    // 1. ACTIVE NAVBAR LINK ON SCROLL
+    const sections = document.querySelectorAll('section');
+    const navLinks = document.querySelectorAll('.nav-links a');
 
-        // --- BUTTON STYLING ---
-        // First, remove the 'active' (cyan) color from all buttons
-        navButtons.forEach(btn => btn.classList.remove('active'));
-        
-        // Then, add the 'active' color ONLY to the button we just clicked
-        this.classList.add('active');
+    window.addEventListener('scroll', () => {
+        let currentSection = '';
 
-        // --- CONTENT SWITCHING ---
-        // Loop through all our sections (About, Resume, Portfolio, etc.)
         sections.forEach(section => {
-            
-            // If the section's ID matches the button's target, show it!
-            if (section.getAttribute('id') === targetId) {
-                section.style.display = 'block';
-                // Trigger a CSS animation for a smooth entrance
-                section.style.animation = 'fadeIn 0.5s ease forwards';
-            } 
-            // Otherwise, hide it.
-            else {
-                section.style.display = 'none';
+            const sectionTop = section.offsetTop - 150;
+            const sectionHeight = section.clientHeight;
+
+            if (window.scrollY >= sectionTop && window.scrollY < sectionTop + sectionHeight) {
+                currentSection = section.getAttribute('id');
+            }
+        });
+
+        navLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href') === `#${currentSection}`) {
+                link.classList.add('active');
             }
         });
     });
+
+    // 2. PORTFOLIO CATEGORY FILTERING LOGIC
+    const filterItems = document.querySelectorAll('.portfolio-filters li');
+    const portfolioCards = document.querySelectorAll('.portfolio-card');
+
+    filterItems.forEach(item => {
+        item.addEventListener('click', () => {
+            // Active class shift
+            filterItems.forEach(filter => filter.classList.remove('active'));
+            item.classList.add('active');
+
+            const selectedFilter = item.textContent.trim().toLowerCase();
+
+            portfolioCards.forEach(card => {
+                // Keep empty placeholder cards visible for grid alignment
+                if (card.classList.contains('empty')) {
+                    card.style.display = 'flex';
+                    return;
+                }
+
+                const cardTitle = card.querySelector('h3') ? card.querySelector('h3').textContent.toLowerCase() : '';
+
+                if (selectedFilter === 'all') {
+                    card.style.display = 'flex';
+                } else {
+                    if (cardTitle.includes(selectedFilter) || 
+                       (selectedFilter === 'ai' && cardTitle.includes('ai')) ||
+                       (selectedFilter === 'web design' && cardTitle.includes('tech arsenal'))) {
+                        card.style.display = 'flex';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                }
+            });
+        });
+    });
+
+    // 3. AUTO RESET CONTACT FORM AFTER SUBMISSION
+    const contactForm = document.querySelector('.contact-form');
+    if (contactForm) {
+        contactForm.addEventListener('submit', () => {
+            setTimeout(() => {
+                contactForm.reset();
+            }, 1000);
+        });
+    }
+
 });
-
-// --- MOBILE SIDEBAR TOGGLE LOGIC ---
-const sidebar = document.getElementById('sidebar');
-const sidebarBtn = document.getElementById('sidebar-btn');
-
-sidebarBtn.addEventListener('click', function() {
-    // .toggle() adds the 'active' class if it's missing, and removes it if it's there
-    sidebar.classList.toggle('active');
-});
-
-
