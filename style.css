@@ -51,7 +51,8 @@ body {
     font-weight: 500; 
     transition: 0.3s; 
 }
-.nav-links a:hover { color: var(--cyan); }
+.nav-links a:hover,
+.nav-links a.active { color: var(--cyan); }
 
 .btn-contact { 
     border: 1px solid var(--cyan); 
