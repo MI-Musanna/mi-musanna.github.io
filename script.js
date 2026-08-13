@@ -50,7 +50,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 } else {
                     if (cardTitle.includes(selectedFilter) || 
                        (selectedFilter === 'ai' && cardTitle.includes('ai')) ||
-                       (selectedFilter === 'web design' && cardTitle.includes('tech arsenal'))) {
+                       (selectedFilter === 'web design' && (cardTitle.includes('tech arsenal') || cardTitle.includes('famexpensync'))) ||
+                       (selectedFilter === 'app development' && cardTitle.includes('famexpensync'))) {
                         card.style.display = 'flex';
                     } else {
                         card.style.display = 'none';
