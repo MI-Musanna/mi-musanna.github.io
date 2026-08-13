@@ -306,12 +306,16 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    height: 60px;
 }
 
 .portfolio-content h3 {
     font-size: 1rem;
     color: var(--text-main);
     font-weight: 500;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .project-link {
@@ -321,6 +325,27 @@ body {
 }
 
 .project-link:hover { transform: scale(1.2); }
+
+/* --- CLEAN MULTI-ACTION BUTTONS --- */
+.card-action-icons {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+.action-btn {
+    color: var(--text-muted);
+    font-size: 1.3rem;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.action-btn:hover {
+    color: var(--cyan);
+    transform: scale(1.25);
+}
 
 .portfolio-card.empty {
     border: 1px dashed rgba(255, 255, 255, 0.1);
@@ -333,76 +358,6 @@ body {
     border-color: rgba(255, 255, 255, 0.2);
     box-shadow: none;
     cursor: not-allowed;
-}
-
-/* --- PRO BADGES & VERTICAL LAYOUT FOR ECOSYSTEM CARD --- */
-.portfolio-content.vertical-layout {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 12px;
-    padding: 15px;
-    width: 100%;
-}
-
-.project-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-}
-
-.project-tag {
-    font-size: 0.65rem;
-    color: var(--cyan);
-    background: rgba(0, 229, 255, 0.08);
-    border: 1px solid rgba(0, 229, 255, 0.25);
-    padding: 2px 8px;
-    border-radius: 12px;
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-}
-
-.repo-badges {
-    display: flex;
-    gap: 8px;
-    width: 100%;
-}
-
-.repo-badge {
-    flex: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 6px;
-    background: rgba(255, 255, 255, 0.04);
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    padding: 7px 10px;
-    border-radius: 8px;
-    color: var(--text-main);
-    text-decoration: none;
-    font-size: 0.78rem;
-    font-weight: 500;
-    transition: all 0.3s ease;
-}
-
-.repo-badge ion-icon {
-    font-size: 1rem;
-    color: var(--cyan);
-    transition: transform 0.3s ease;
-}
-
-.repo-badge:hover {
-    background: rgba(0, 229, 255, 0.12);
-    border-color: var(--cyan);
-    color: var(--cyan);
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0, 229, 255, 0.15);
-}
-
-.repo-badge:hover ion-icon {
-    transform: scale(1.15);
 }
 
 .portfolio-pagination {
@@ -528,8 +483,6 @@ body {
     .portfolio-thumb { height: 125px; }
     .portfolio-card.empty { height: 180px; } 
     .portfolio-pagination { margin-top: 30px; margin-bottom: 20px; }
-
-    .repo-badges { flex-direction: column; gap: 6px; }
 
     .skills-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
     .skill-badge { padding: 12px 10px; font-size: 0.85rem; gap: 8px; }
