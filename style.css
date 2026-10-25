@@ -1623,6 +1623,8 @@ main {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
     margin-bottom: 24px;
 }
 
@@ -1635,12 +1637,16 @@ main {
     align-items: center;
     gap: 6px;
     font-family: var(--font-mono);
-    font-size: 0.74rem;
+    font-size: 0.72rem;
+    font-weight: 500;
     color: var(--accent-mint-glow);
-    background: var(--mint-dim);
-    padding: 3px 10px;
-    border-radius: var(--radius-full);
-    border: 1px solid var(--mint-border);
+    background: rgba(16, 185, 129, 0.08);
+    border: 1px solid rgba(16, 185, 129, 0.25);
+    border-radius: 6px;
+    padding: 4px 10px;
+    line-height: 1;
+    white-space: nowrap;
+    flex-shrink: 0;
 }
 
 .form-endpoint-status .status-dot {
@@ -1648,6 +1654,7 @@ main {
     height: 6px;
     border-radius: 50%;
     background: var(--accent-mint-glow);
+    flex-shrink: 0;
 }
 
 .form-row {
