@@ -1,12 +1,12 @@
 /**
  * ==========================================================================
  * MAHDI ISLAM | PROFESSIONAL PORTFOLIO
- * Architecture: Modular ES6+ Client Engine
+ * Architecture: High-Performance Modular ES6+ Client Engine (60fps)
  * Features:
- *   - IntersectionObserver Active ScrollSpy (Desktop Nav & Mobile Dock)
- *   - Dynamic Project Category Filtering with Fade Animation
+ *   - Native IntersectionObserver Active ScrollSpy (Zero Scroll Jitter)
+ *   - Instant Category Filtering with GPU-friendly Fade Transitions
  *   - Asynchronous Formspree AJAX Submission with Toast Notifications
- *   - Copy Coordinates to Clipboard
+ *   - Clipboard Coordinate Copying with Real-time Feedback
  *   - Mobile Menu Drawer & Micro-interactions
  * ==========================================================================
  */
@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
      * @param {'mint' | 'amber'} type - Accent glow theme
      * @param {number} duration - Auto dismiss timeout in ms
      */
-    function showToast(message, type = 'mint', duration = 4000) {
+    function showToast(message, type = 'mint', duration = 3800) {
         if (!toastContainer) return;
 
         const toast = document.createElement('div');
@@ -40,54 +40,96 @@ document.addEventListener('DOMContentLoaded', () => {
         // Auto removal after duration
         setTimeout(() => {
             toast.style.opacity = '0';
-            toast.style.transform = 'translateY(15px) scale(0.95)';
+            toast.style.transform = 'translateY(12px) scale(0.96)';
             setTimeout(() => {
                 if (toast.parentNode) {
                     toast.parentNode.removeChild(toast);
                 }
-            }, 300);
+            }, 250);
         }, duration);
     }
 
-    // --- 2. ACTIVE SCROLLSPY (DESKTOP & MOBILE DOCK) ---
+    // --- 2. 60FPS ACTIVE SCROLLSPY (INTERSECTION OBSERVER) ---
+    // Zero unthrottled scroll listeners, zero offsetTop/offsetHeight DOM layout thrashing.
     const navLinks = document.querySelectorAll('.nav-link');
     const dockItems = document.querySelectorAll('.dock-item');
-    const sections = document.querySelectorAll('section[id], header[id]');
+    const sections = document.querySelectorAll('section[id]');
 
-    function updateActiveNavigation() {
-        const scrollPosition = window.scrollY + 200;
+    function updateActiveNavigation(activeId) {
+        if (!activeId) return;
 
-        sections.forEach(section => {
-            const sectionTop = section.offsetTop;
-            const sectionHeight = section.offsetHeight;
-            const sectionId = section.getAttribute('id');
+        // Desktop navbar links
+        navLinks.forEach(link => {
+            const href = link.getAttribute('href');
+            if (href === `#${activeId}`) {
+                link.classList.add('active');
+            } else {
+                link.classList.remove('active');
+            }
+        });
 
-            if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
-                // Update Desktop Navbar
-                navLinks.forEach(link => {
-                    const href = link.getAttribute('href');
-                    if (href === `#${sectionId}`) {
-                        link.classList.add('active');
-                    } else {
-                        link.classList.remove('active');
-                    }
-                });
-
-                // Update Mobile Floating Dock
-                dockItems.forEach(dock => {
-                    const target = dock.getAttribute('data-target');
-                    if (target === sectionId) {
-                        dock.classList.add('active');
-                    } else {
-                        dock.classList.remove('active');
-                    }
-                });
+        // Mobile floating dock links
+        dockItems.forEach(dock => {
+            const target = dock.getAttribute('data-target');
+            if (target === activeId) {
+                dock.classList.add('active');
+            } else {
+                dock.classList.remove('active');
             }
         });
     }
 
-    window.addEventListener('scroll', updateActiveNavigation, { passive: true });
-    updateActiveNavigation(); // Initial check
+    // IntersectionObserver with rootMargin calibrated for smooth section activation
+    const visibleSections = new Map();
+
+    const scrollSpyObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                visibleSections.set(entry.target.id, entry.intersectionRatio);
+            } else {
+                visibleSections.delete(entry.target.id);
+            }
+        });
+
+        if (visibleSections.size > 0) {
+            let bestId = null;
+            let highestRatio = -1;
+            visibleSections.forEach((ratio, id) => {
+                if (ratio > highestRatio) {
+                    highestRatio = ratio;
+                    bestId = id;
+                }
+            });
+            if (bestId) {
+                updateActiveNavigation(bestId);
+            }
+        }
+    }, {
+        root: null,
+        rootMargin: '-15% 0px -40% 0px',
+        threshold: [0, 0.15, 0.3, 0.5, 0.75, 1.0]
+    });
+
+    sections.forEach(section => scrollSpyObserver.observe(section));
+
+    // Instant active link update on click
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function() {
+            const targetId = this.getAttribute('href').substring(1);
+            if (targetId) {
+                updateActiveNavigation(targetId);
+            }
+        });
+    });
+
+    dockItems.forEach(item => {
+        item.addEventListener('click', function() {
+            const targetId = this.getAttribute('data-target');
+            if (targetId) {
+                updateActiveNavigation(targetId);
+            }
+        });
+    });
 
     // --- 3. MOBILE MENU TOGGLE ---
     const mobileToggle = document.getElementById('mobileToggle');
@@ -121,14 +163,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 const selectedCategory = button.getAttribute('data-filter') || 'all';
 
-                // Filter cards with smooth fade transitions
+                // Filter cards with smooth GPU-accelerated fade transitions
                 projectCards.forEach(card => {
                     const categories = (card.getAttribute('data-category') || '').toLowerCase().split(/\s+/);
                     const shouldDisplay = (selectedCategory === 'all') || categories.includes(selectedCategory);
 
                     if (shouldDisplay) {
                         card.style.display = 'flex';
-                        // Trigger reflow to restart CSS animation
+                        // Trigger reflow to restart CSS animation cleanly
                         void card.offsetWidth;
                         card.classList.remove('fade-out');
                         card.classList.add('fade-in');
@@ -139,7 +181,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             if (card.classList.contains('fade-out')) {
                                 card.style.display = 'none';
                             }
-                        }, 250);
+                        }, 200);
                     }
                 });
             });
@@ -193,7 +235,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         formFeedback.textContent = 'Transmission received successfully! Mahdi will respond to your inquiry shortly.';
                         formFeedback.style.display = 'block';
                     }
-                    showToast('Transmission transmitted successfully! Thank you.', 'mint');
+                    showToast('Transmission received successfully! Thank you.', 'mint');
                 } else {
                     // Server responded with non-200
                     const data = await response.json().catch(() => null);
@@ -261,21 +303,8 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // --- 8. SUBTLE INTERACTIVE TILT FOR BENTO & CARDS ---
-    const glassCards = document.querySelectorAll('.bento-card, .project-card');
-    glassCards.forEach(card => {
-        card.addEventListener('mousemove', (e) => {
-            const rect = card.getBoundingClientRect();
-            const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top;
-
-            card.style.setProperty('--mouse-x', `${x}px`);
-            card.style.setProperty('--mouse-y', `${y}px`);
-        });
-    });
-
     console.log(
-        '%c MI. Portfolio %c Cyber Emerald & Obsidian Glass Initialized ',
+        '%c MI. Portfolio %c 60fps Cyber Emerald & Obsidian Engine Active ',
         'background: #10b981; color: #070a0f; font-weight: bold; border-radius: 4px; padding: 2px 6px;',
         'background: #0d121c; color: #34d399; border: 1px solid #10b981; border-radius: 4px; padding: 2px 6px;'
     );

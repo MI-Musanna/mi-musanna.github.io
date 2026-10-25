@@ -33,7 +33,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     
     <!-- Stylesheet -->
-    <link rel="stylesheet" href="style.css?v=2026.1">
+    <link rel="stylesheet" href="style.css?v=2026.2">
     
     <!-- Ionicons -->
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
@@ -50,7 +50,7 @@
     <!-- Header & Sticky Navbar -->
     <header class="header">
         <nav class="navbar" id="navbar">
-            <a href="#home" class="brand-logo" aria-label="Mahdi Islam Portfolio">
+            <a href="#home" class="brand-logo" aria-label="Mahdi Islam Portfolio Home">
                 <div class="logo-badge">
                     <img src="favicon.png" alt="MI Emblem" class="logo-img">
                 </div>
@@ -68,9 +68,9 @@
             </div>
 
             <div class="nav-actions">
-                <a href="assets/Mahdi_Islam_CV.pdf" download="Mahdi_Islam_CV.pdf" class="btn-resume" title="Download Mahdi Islam CV">
-                    <ion-icon name="document-text-outline" class="btn-icon"></ion-icon>
-                    <span>Resume</span>
+                <a href="#contact" class="btn-header-cta" title="Reach out to Mahdi Islam">
+                    <ion-icon name="chatbubbles-outline" class="btn-icon"></ion-icon>
+                    <span>Let's Talk</span>
                 </a>
                 <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle navigation menu">
                     <span></span>
@@ -110,7 +110,7 @@
                         <span class="tech-pill"><ion-icon name="film-outline"></ion-icon> Media Edit</span>
                     </div>
 
-                    <!-- Call To Actions -->
+                    <!-- Call To Actions (Zero duplicate buttons: Download CV exclusively here alongside Explore Projects) -->
                     <div class="hero-cta-group">
                         <a href="#portfolio" class="btn-primary">
                             <span>Explore Projects</span>
@@ -119,10 +119,6 @@
                         <a href="assets/Mahdi_Islam_CV.pdf" download="Mahdi_Islam_CV.pdf" class="btn-secondary">
                             <ion-icon name="download-outline"></ion-icon>
                             <span>Download CV</span>
-                        </a>
-                        <a href="#contact" class="btn-ghost">
-                            <ion-icon name="chatbubbles-outline"></ion-icon>
-                            <span>Get In Touch</span>
                         </a>
                     </div>
                 </div>
@@ -195,7 +191,7 @@
                     <div class="metric-data">
                         <span class="metric-val">100%</span>
                         <span class="metric-label">Performance First</span>
-                        <span class="metric-sub">Minimal bloat, maximum agility</span>
+                        <span class="metric-sub">Minimal bloat, 60fps agility</span>
                     </div>
                 </div>
 
@@ -572,43 +568,43 @@
             <!-- Projects Grid (Zero empty placeholders; pure production cards) -->
             <div class="projects-grid" id="projectsGrid">
                 
-                <!-- Project 1: Yelena AI -->
+                <!-- Project 1: Yelena AI Assistant Widget -->
                 <article class="project-card" data-category="ai web">
                     <div class="project-image-wrap">
                         <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgoLhiJzXs61CcoWHAT4R6UQTr9_UlzouRaOcka-DyczRI7EwIyg60WVnyTjzS5WBRIjW8zeq4wefH-B9-4TY7ykDCim_zpqPRtgogo8kVIkloJBTZOu4Yg6r7qTSMiEFWnPHpN19Axt-mdYDExtPsE0wp-ubQJhYawphqHhAXVp7C7WYI/s1600/Gemini_Generated_Image_mljqtmmljqtmmljq.png" 
-                             alt="Yelena AI Assistant Interface" 
+                             alt="Yelena AI Assistant Widget Interface" 
                              class="project-img" 
                              loading="lazy">
                         <div class="project-overlay">
                             <span class="category-badge mint">
-                                <ion-icon name="sparkles-outline"></ion-icon> AI Assistant
+                                <ion-icon name="sparkles-outline"></ion-icon> AI Widget
                             </span>
                         </div>
                     </div>
                     
                     <div class="project-body">
                         <div class="project-header">
-                            <h3 class="project-title">Yelena AI</h3>
-                            <a href="https://yelena-ai.streamlit.app/" target="_blank" rel="noopener noreferrer" class="project-icon-link" title="Open Live Yelena AI App">
+                            <h3 class="project-title">Yelena AI Assistant Widget</h3>
+                            <a href="https://mitecharsenal.blogspot.com/" target="_blank" rel="noopener noreferrer" class="project-icon-link" title="Open Yelena AI Live on Blog">
                                 <ion-icon name="arrow-forward-outline"></ion-icon>
                             </a>
                         </div>
 
                         <p class="project-description">
-                            Custom interactive AI assistant widget integrated with automated logic and Streamlit cloud deployment. Features real-time prompt parsing and a minimalist user interface designed for fast, focused interactions.
+                            Interactive AI assistant widget engine orchestrated on Vercel and integrated live into MI Tech Arsenal blog for real-time visitor interactions.
                         </p>
 
                         <div class="project-tags">
-                            <span class="tag-code">Streamlit</span>
-                            <span class="tag-code">Python</span>
-                            <span class="tag-code">AI Assistant</span>
-                            <span class="tag-code">Cloud</span>
+                            <span class="tag-code">Vercel Engine</span>
+                            <span class="tag-code">AI API</span>
+                            <span class="tag-code">Web Widget</span>
+                            <span class="tag-code">JavaScript</span>
                         </div>
 
                         <div class="project-actions">
-                            <a href="https://yelena-ai.streamlit.app/" target="_blank" rel="noopener noreferrer" class="btn-project-primary">
+                            <a href="https://mitecharsenal.blogspot.com/" target="_blank" rel="noopener noreferrer" class="btn-project-primary">
                                 <ion-icon name="open-outline"></ion-icon>
-                                <span>Launch App</span>
+                                <span>Live on Blog</span>
                             </a>
                         </div>
                     </div>
@@ -866,7 +862,7 @@
 
                 <div class="footer-system-status">
                     <span class="status-pulse-small"></span>
-                    <span>All Systems Operational &bull; Cyber Emerald & Obsidian UI</span>
+                    <span>All Systems Operational &bull; 60fps Cyber Emerald & Obsidian UI</span>
                 </div>
 
                 <a href="#home" class="btn-back-to-top" id="backToTopBtn" title="Scroll to top" aria-label="Scroll to top">
@@ -886,7 +882,6 @@
                     <a href="#skills">Skills</a>
                     <a href="#portfolio">Projects</a>
                     <a href="#contact">Contact</a>
-                    <a href="assets/Mahdi_Islam_CV.pdf" download="Mahdi_Islam_CV.pdf">CV</a>
                 </div>
             </div>
         </div>
@@ -920,6 +915,6 @@
     <div class="toast-container" id="toastContainer" aria-live="polite"></div>
 
     <!-- Application Script -->
-    <script src="script.js?v=2026.1"></script>
+    <script src="script.js?v=2026.2"></script>
 </body>
 </html>
