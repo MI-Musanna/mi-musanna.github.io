@@ -1,6 +1,6 @@
 /* ==========================================================================
    MAHDI ISLAM | PROFESSIONAL PORTFOLIO
-   Design System: Cyber Emerald & Obsidian Glass (60fps Ultra-Performance)
+   Design System: Cyber Emerald & Obsidian Glass (Ultra 60fps Performance)
    Author: Mahdi Islam
    ========================================================================== */
 
@@ -11,7 +11,7 @@
     --bg-obsidian-surface: #0d121c;
     --bg-obsidian-elevated: #111827;
     
-    /* High-Performance Obsidian Surfaces (Zero GPU Backdrop-Filter Penalty) */
+    /* High-Performance Obsidian Surfaces (Zero GPU Blur Cost) */
     --bg-card: rgba(13, 18, 28, 0.85);
     --bg-card-hover: rgba(22, 33, 58, 0.92);
     --bg-nav: rgba(7, 10, 15, 0.88);
@@ -23,8 +23,8 @@
     --accent-mint-dark: #059669;
     --mint-dim: rgba(16, 185, 129, 0.12);
     --mint-border: rgba(16, 185, 129, 0.35);
-    --mint-glow-shadow: 0 0 16px rgba(16, 185, 129, 0.25);
-    --mint-subtle-glow: 0 0 10px rgba(52, 211, 153, 0.15);
+    --mint-glow-shadow: 0 0 14px rgba(16, 185, 129, 0.22);
+    --mint-subtle-glow: 0 0 8px rgba(52, 211, 153, 0.15);
 
     /* Secondary Contrast: Golden Amber */
     --accent-amber: #f59e0b;
@@ -39,11 +39,11 @@
     --text-muted: #64748b;
     --text-dark: #070a0f;
 
-    /* Crisp High-Performance Borders & Shadows */
+    /* Crisp High-Performance Borders & Lightweight Ambient Shadows */
     --border-card: rgba(255, 255, 255, 0.08);
     --border-card-light: rgba(255, 255, 255, 0.14);
-    --card-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
-    --card-shadow-hover: 0 6px 20px rgba(0, 0, 0, 0.5);
+    --card-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    --card-shadow-hover: 0 6px 16px rgba(0, 0, 0, 0.4);
     
     /* Typography */
     --font-heading: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
@@ -52,8 +52,8 @@
 
     /* Border Radii */
     --radius-sm: 8px;
-    --radius-md: 14px;
-    --radius-lg: 20px;
+    --radius-md: 12px;
+    --radius-lg: 16px;
     --radius-full: 9999px;
 
     /* 60fps Micro-Transitions */
@@ -68,10 +68,11 @@
     box-sizing: border-box;
 }
 
-/* Native Inertial Momentum Scrolling (Restored 100% Native Momentum) */
+/* Native Inertial Momentum Scrolling (100% Uninhibited Native Momentum) */
 html {
     font-size: 16px;
     color-scheme: dark;
+    touch-action: pan-y;
 }
 
 body {
@@ -85,6 +86,7 @@ body {
     overflow-x: hidden;
     min-height: 100vh;
     position: relative;
+    touch-action: pan-y;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
@@ -204,33 +206,37 @@ main {
     border: 1px solid var(--border-card);
     border-radius: var(--radius-lg);
     padding: 16px 24px;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+    box-shadow: var(--card-shadow);
 }
 
-.brand-logo {
+/* Uncropped, Sharp Brand Logo (Header & Footer) */
+.brand-logo,
+.footer-logo {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 10px;
     flex-shrink: 0;
 }
 
 .logo-badge {
-    width: 38px;
-    height: 38px;
-    border-radius: 10px;
-    overflow: hidden;
-    border: 1px solid var(--mint-border);
-    background: var(--bg-obsidian-surface);
+    width: 36px;
+    height: 36px;
+    padding: 4px;
+    border-radius: 8px;
+    background: rgba(16, 185, 129, 0.08);
+    border: 1px solid rgba(16, 185, 129, 0.3);
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: var(--mint-subtle-glow);
+    box-shadow: 0 0 10px rgba(16, 185, 129, 0.15);
+    flex-shrink: 0;
 }
 
 .logo-img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;
+    display: block;
 }
 
 .logo-text {
@@ -305,7 +311,7 @@ main {
     font-weight: 600;
     background: var(--mint-dim);
     transition: var(--trans-smooth);
-    box-shadow: 0 0 12px rgba(16, 185, 129, 0.12);
+    box-shadow: 0 0 10px rgba(16, 185, 129, 0.12);
 }
 
 .btn-header-cta:hover {
@@ -519,7 +525,7 @@ main {
 .btn-primary:hover {
     background: var(--accent-mint-glow);
     transform: translateY(-2px);
-    box-shadow: 0 0 20px rgba(52, 211, 153, 0.4);
+    box-shadow: 0 0 18px rgba(52, 211, 153, 0.35);
 }
 
 .btn-primary ion-icon {
@@ -572,7 +578,7 @@ main {
     inset: -6px;
     border-radius: 50%;
     background: linear-gradient(135deg, rgba(16, 185, 129, 0.35), rgba(245, 158, 11, 0.25));
-    box-shadow: 0 0 35px rgba(16, 185, 129, 0.25);
+    box-shadow: 0 0 30px rgba(16, 185, 129, 0.22);
 }
 
 .frame-border {
@@ -582,7 +588,7 @@ main {
     border-radius: 50%;
     padding: 5px;
     background: linear-gradient(135deg, var(--accent-mint), rgba(255,255,255,0.1), var(--accent-amber));
-    box-shadow: 0 0 24px rgba(0, 0, 0, 0.7);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.6);
 }
 
 .profile-img {
@@ -620,7 +626,7 @@ main {
 .badge-icon-box {
     width: 36px;
     height: 36px;
-    border-radius: 10px;
+    border-radius: 8px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -681,13 +687,13 @@ main {
 }
 
 .metric-icon-wrap {
-    width: 48px;
-    height: 48px;
-    border-radius: 12px;
+    width: 46px;
+    height: 46px;
+    border-radius: 10px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.5rem;
+    font-size: 1.45rem;
     flex-shrink: 0;
 }
 
@@ -947,7 +953,7 @@ main {
     contain-intrinsic-size: 1px 600px;
 }
 
-/* --- 8. DUAL-TIER SKILLS MATRIX --- */
+/* --- 8. REDESIGNED BENTO SKILLS MATRIX --- */
 .skills-section {
     padding: 60px 6% 90px;
     max-width: 1320px;
@@ -957,24 +963,21 @@ main {
 .matrix-container {
     display: flex;
     flex-direction: column;
-    gap: 48px;
+    gap: 40px;
 }
 
+/* Tier Block Bento Structure */
 .tier-block {
-    background: var(--bg-card);
-    border: 1px solid var(--border-card);
-    border-radius: var(--radius-lg);
-    padding: 36px;
-    position: relative;
-    box-shadow: var(--card-shadow);
+    background: rgba(13, 18, 28, 0.85);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    padding: 28px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    transition: border-color var(--trans-fast);
 }
 
-.tier-active {
-    border-top: 2px solid var(--accent-mint);
-}
-
-.tier-roadmap {
-    border-top: 2px solid var(--accent-amber);
+.tier-block:hover {
+    border-color: rgba(255, 255, 255, 0.14);
 }
 
 .tier-header {
@@ -982,130 +985,106 @@ main {
     align-items: center;
     justify-content: space-between;
     flex-wrap: wrap;
-    gap: 14px;
+    gap: 12px;
     margin-bottom: 12px;
 }
 
 .tier-title-wrap {
     display: flex;
     align-items: center;
-    gap: 14px;
-}
-
-.tier-indicator-pill {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    padding: 4px 12px;
-    border-radius: var(--radius-full);
-    font-family: var(--font-mono);
-    font-size: 0.78rem;
-    font-weight: 700;
-    text-transform: uppercase;
-}
-
-.tier-indicator-pill.active {
-    background: var(--mint-dim);
-    color: var(--accent-mint-glow);
-    border: 1px solid var(--mint-border);
-}
-
-.tier-indicator-pill.roadmap {
-    background: var(--amber-dim);
-    color: var(--accent-amber-glow);
-    border: 1px solid var(--amber-border);
-}
-
-.radar-ping {
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background: var(--accent-mint-glow);
-}
-
-.radar-ping.amber {
-    background: var(--accent-amber-glow);
+    gap: 12px;
+    flex-wrap: wrap;
 }
 
 .tier-title {
-    font-size: 1.55rem;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--text-primary);
     letter-spacing: -0.3px;
 }
 
-.tier-badge-mint {
-    font-size: 0.82rem;
+/* Status Chip in JetBrains Mono font, 11px uppercase, with subtle border */
+.tier-chip {
     font-family: var(--font-mono);
-    color: var(--accent-mint-glow);
-    background: rgba(16, 185, 129, 0.08);
-    padding: 6px 14px;
-    border-radius: var(--radius-full);
-    border: 1px solid var(--mint-border);
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 3px 10px;
+    border-radius: 6px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
 }
 
-.tier-badge-amber {
-    font-size: 0.82rem;
-    font-family: var(--font-mono);
+.chip-active {
+    background: rgba(16, 185, 129, 0.1);
+    color: var(--accent-mint-glow);
+    border: 1px solid rgba(16, 185, 129, 0.3);
+}
+
+.chip-roadmap {
+    background: rgba(245, 158, 11, 0.1);
     color: var(--accent-amber-glow);
-    background: rgba(245, 158, 11, 0.08);
-    padding: 6px 14px;
-    border-radius: var(--radius-full);
-    border: 1px solid var(--amber-border);
+    border: 1px solid rgba(245, 158, 11, 0.3);
+}
+
+.tier-meta {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--text-muted);
 }
 
 .tier-description {
     color: var(--text-secondary);
-    font-size: 0.96rem;
-    margin-bottom: 28px;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 24px;
     max-width: 820px;
 }
 
-/* Skills Cards Grid */
+/* Bento Skill Cards Grid */
 .skills-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 20px;
+    gap: 18px;
 }
 
 .skill-card {
     background: rgba(10, 14, 23, 0.85);
-    border: 1px solid var(--border-card);
-    border-radius: var(--radius-md);
-    padding: 24px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 10px;
+    padding: 20px;
     display: flex;
     flex-direction: column;
-    box-shadow: var(--card-shadow);
-    transition: var(--trans-smooth);
-    position: relative;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    transition: transform var(--trans-fast), border-color var(--trans-fast);
 }
 
 .skill-card:hover {
     transform: translateY(-2px);
-    box-shadow: var(--card-shadow-hover);
+    border-color: rgba(16, 185, 129, 0.35);
 }
 
-.active-card:hover {
-    border-color: var(--mint-border);
-}
-
-.roadmap-card:hover {
-    border-color: var(--amber-border);
+.tier-roadmap .skill-card:hover {
+    border-color: rgba(245, 158, 11, 0.35);
 }
 
 .skill-top {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-bottom: 16px;
+    margin-bottom: 14px;
 }
 
 .skill-icon-box {
-    width: 44px;
-    height: 44px;
-    border-radius: 12px;
+    width: 38px;
+    height: 38px;
+    border-radius: 8px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.35rem;
+    font-size: 1.25rem;
 }
 
 .skill-icon-box.mint {
@@ -1122,36 +1101,38 @@ main {
 
 .skill-status-tag {
     font-family: var(--font-mono);
-    font-size: 0.72rem;
+    font-size: 10px;
     font-weight: 700;
     text-transform: uppercase;
-    padding: 3px 8px;
+    letter-spacing: 0.5px;
+    padding: 2px 8px;
     border-radius: 4px;
 }
 
-.skill-status-tag.active {
-    background: rgba(16, 185, 129, 0.15);
+.skill-status-tag.mint {
+    background: rgba(16, 185, 129, 0.12);
     color: var(--accent-mint-glow);
-    border: 1px solid var(--mint-border);
+    border: 1px solid rgba(16, 185, 129, 0.25);
 }
 
-.skill-status-tag.roadmap {
-    background: rgba(245, 158, 11, 0.15);
+.skill-status-tag.amber {
+    background: rgba(245, 158, 11, 0.12);
     color: var(--accent-amber-glow);
-    border: 1px solid var(--amber-border);
+    border: 1px solid rgba(245, 158, 11, 0.25);
 }
 
 .skill-name {
-    font-size: 1.15rem;
+    font-size: 1.08rem;
     font-weight: 600;
-    margin-bottom: 8px;
+    margin-bottom: 6px;
+    color: var(--text-primary);
 }
 
 .skill-summary {
     color: var(--text-secondary);
-    font-size: 0.88rem;
-    line-height: 1.6;
-    margin-bottom: 16px;
+    font-size: 0.86rem;
+    line-height: 1.55;
+    margin-bottom: 14px;
     flex-grow: 1;
 }
 
@@ -1164,12 +1145,12 @@ main {
 
 .skill-tags span {
     font-family: var(--font-mono);
-    font-size: 0.72rem;
+    font-size: 11px;
     color: var(--text-muted);
     background: rgba(255, 255, 255, 0.04);
-    padding: 3px 8px;
+    padding: 2px 7px;
     border-radius: 4px;
-    border: 1px solid var(--border-card);
+    border: 1px solid rgba(255, 255, 255, 0.06);
 }
 
 /* --- 9. FILTERABLE PROJECTS SHOWCASE --- */
@@ -1265,7 +1246,7 @@ main {
 .project-image-wrap {
     position: relative;
     width: 100%;
-    height: 220px;
+    aspect-ratio: 16 / 9;
     overflow: hidden;
     background: var(--bg-obsidian-surface);
 }
@@ -1273,7 +1254,9 @@ main {
 .project-img {
     width: 100%;
     height: 100%;
+    aspect-ratio: 16 / 9;
     object-fit: cover;
+    display: block;
     transition: transform var(--trans-smooth);
 }
 
@@ -1314,7 +1297,7 @@ main {
 }
 
 .project-body {
-    padding: 26px;
+    padding: 24px;
     display: flex;
     flex-direction: column;
     flex-grow: 1;
@@ -1485,7 +1468,6 @@ main {
 
 .panel-title {
     font-size: 1.55rem;
-    margin-bottom: 8px;
 }
 
 .panel-desc {
@@ -1710,7 +1692,7 @@ main {
 
 .form-input:focus, .form-textarea:focus {
     border-color: var(--accent-mint);
-    box-shadow: 0 0 12px rgba(16, 185, 129, 0.2);
+    box-shadow: 0 0 10px rgba(16, 185, 129, 0.2);
     background: rgba(10, 14, 23, 0.9);
 }
 
@@ -1740,7 +1722,7 @@ main {
 .btn-submit:hover:not(:disabled) {
     background: var(--accent-mint-glow);
     transform: translateY(-2px);
-    box-shadow: 0 0 20px rgba(52, 211, 153, 0.4);
+    box-shadow: 0 0 18px rgba(52, 211, 153, 0.35);
 }
 
 .btn-submit:disabled {
@@ -1903,7 +1885,7 @@ main {
     border: 1px solid var(--border-card-light);
     border-radius: var(--radius-full);
     padding: 8px 16px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.6);
     z-index: 1000;
     gap: 6px;
     align-items: center;
@@ -1954,7 +1936,7 @@ main {
     border: 1px solid var(--border-card-light);
     color: #ffffff;
     font-size: 0.9rem;
-    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.45);
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
     animation: toastSlideIn 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
     transition: opacity 0.2s ease, transform 0.2s ease;
 }
@@ -2076,12 +2058,15 @@ main {
         padding: 14px 20px;
         justify-content: space-between;
     }
-    .brand-logo {
+    .brand-logo,
+    .footer-logo {
         gap: 10px;
     }
     .logo-badge {
         width: 34px;
         height: 34px;
+        padding: 3px;
+        border-radius: 8px;
     }
     .logo-text {
         font-size: 1.3rem;
@@ -2157,7 +2142,7 @@ main {
         justify-content: center;
     }
     .bento-card, .tier-block, .contact-info-panel, .contact-form-panel {
-        padding: 22px 18px;
+        padding: 20px 16px;
     }
     .socials-grid {
         grid-template-columns: 1fr;
