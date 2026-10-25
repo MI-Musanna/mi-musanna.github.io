@@ -1,9 +1,10 @@
 /**
  * ==========================================================================
  * MAHDI ISLAM | PROFESSIONAL PORTFOLIO
- * Architecture: High-Performance Modular ES6+ Client Engine (60fps)
+ * Architecture: Ultra-Performance Modular ES6+ Client Engine (60fps)
  * Features:
- *   - Native IntersectionObserver Active ScrollSpy (Zero Scroll Jitter)
+ *   - Streamlined IntersectionObserver Active ScrollSpy (Zero Layout Thrashing)
+ *   - Native Inertial Momentum Scrolling with Anchor-Exclusive Smooth Scroll
  *   - Instant Category Filtering with GPU-friendly Fade Transitions
  *   - Asynchronous Formspree AJAX Submission with Toast Notifications
  *   - Clipboard Coordinate Copying with Real-time Feedback
@@ -18,7 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const toastContainer = document.getElementById('toastContainer');
 
     /**
-     * Display a sleek glassmorphic toast notification.
+     * Display a sleek obsidian toast notification.
      * @param {string} message - Message text to display
      * @param {'mint' | 'amber'} type - Accent glow theme
      * @param {number} duration - Auto dismiss timeout in ms
@@ -45,23 +46,24 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (toast.parentNode) {
                     toast.parentNode.removeChild(toast);
                 }
-            }, 250);
+            }, 200);
         }, duration);
     }
 
-    // --- 2. 60FPS ACTIVE SCROLLSPY (INTERSECTION OBSERVER) ---
-    // Zero unthrottled scroll listeners, zero offsetTop/offsetHeight DOM layout thrashing.
+    // --- 2. 60FPS ACTIVE SCROLLSPY (STREAMLINED INTERSECTION OBSERVER) ---
     const navLinks = document.querySelectorAll('.nav-link');
     const dockItems = document.querySelectorAll('.dock-item');
     const sections = document.querySelectorAll('section[id]');
+    let lastActiveId = '';
 
     function updateActiveNavigation(activeId) {
-        if (!activeId) return;
+        // Change-guard: only execute when active section genuinely changes
+        if (!activeId || activeId === lastActiveId) return;
+        lastActiveId = activeId;
 
         // Desktop navbar links
         navLinks.forEach(link => {
-            const href = link.getAttribute('href');
-            if (href === `#${activeId}`) {
+            if (link.getAttribute('href') === `#${activeId}`) {
                 link.classList.add('active');
             } else {
                 link.classList.remove('active');
@@ -70,8 +72,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Mobile floating dock links
         dockItems.forEach(dock => {
-            const target = dock.getAttribute('data-target');
-            if (target === activeId) {
+            if (dock.getAttribute('data-target') === activeId) {
                 dock.classList.add('active');
             } else {
                 dock.classList.remove('active');
@@ -79,59 +80,49 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // IntersectionObserver with rootMargin calibrated for smooth section activation
-    const visibleSections = new Map();
-
     const scrollSpyObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                visibleSections.set(entry.target.id, entry.intersectionRatio);
-            } else {
-                visibleSections.delete(entry.target.id);
+                updateActiveNavigation(entry.target.id);
             }
         });
-
-        if (visibleSections.size > 0) {
-            let bestId = null;
-            let highestRatio = -1;
-            visibleSections.forEach((ratio, id) => {
-                if (ratio > highestRatio) {
-                    highestRatio = ratio;
-                    bestId = id;
-                }
-            });
-            if (bestId) {
-                updateActiveNavigation(bestId);
-            }
-        }
     }, {
         root: null,
-        rootMargin: '-15% 0px -40% 0px',
-        threshold: [0, 0.15, 0.3, 0.5, 0.75, 1.0]
+        rootMargin: '-20% 0px -50% 0px',
+        threshold: [0.2] // Single lean threshold for zero layout thrashing
     });
 
     sections.forEach(section => scrollSpyObserver.observe(section));
 
-    // Instant active link update on click
+    // --- 3. EXCLUSIVE ANCHOR-CLICK SMOOTH SCROLLING ---
+    // Preserves 100% native inertial momentum on mousewheel and touch gestures
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function() {
-            const targetId = this.getAttribute('href').substring(1);
-            if (targetId) {
-                updateActiveNavigation(targetId);
+        anchor.addEventListener('click', function(e) {
+            const href = this.getAttribute('href');
+            if (href && href.startsWith('#') && href.length > 1) {
+                const target = document.querySelector(href);
+                if (target) {
+                    e.preventDefault();
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
             }
         });
     });
 
-    dockItems.forEach(item => {
-        item.addEventListener('click', function() {
+    dockItems.forEach(dock => {
+        dock.addEventListener('click', function(e) {
             const targetId = this.getAttribute('data-target');
             if (targetId) {
-                updateActiveNavigation(targetId);
+                const target = document.getElementById(targetId);
+                if (target) {
+                    e.preventDefault();
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
             }
         });
     });
 
-    // --- 3. MOBILE MENU TOGGLE ---
+    // --- 4. MOBILE MENU TOGGLE ---
     const mobileToggle = document.getElementById('mobileToggle');
     const navLinksWrapper = document.getElementById('navLinksWrapper');
 
@@ -150,7 +141,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // --- 4. PROJECT CATEGORY FILTERING ---
+    // --- 5. PROJECT CATEGORY FILTERING ---
     const filterButtons = document.querySelectorAll('#portfolioFilters .filter-btn');
     const projectCards = document.querySelectorAll('.project-card');
 
@@ -163,14 +154,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 const selectedCategory = button.getAttribute('data-filter') || 'all';
 
-                // Filter cards with smooth GPU-accelerated fade transitions
+                // Filter cards with smooth GPU-friendly fade transitions
                 projectCards.forEach(card => {
                     const categories = (card.getAttribute('data-category') || '').toLowerCase().split(/\s+/);
                     const shouldDisplay = (selectedCategory === 'all') || categories.includes(selectedCategory);
 
                     if (shouldDisplay) {
                         card.style.display = 'flex';
-                        // Trigger reflow to restart CSS animation cleanly
                         void card.offsetWidth;
                         card.classList.remove('fade-out');
                         card.classList.add('fade-in');
@@ -196,7 +186,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // --- 5. ASYNCHRONOUS FORMSPREE SUBMISSION (AJAX) ---
+    // --- 6. ASYNCHRONOUS FORMSPREE SUBMISSION (AJAX) ---
     const contactForm = document.getElementById('contactForm');
     const submitBtn = document.getElementById('submitBtn');
     const formFeedback = document.getElementById('formFeedback');
@@ -265,7 +255,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // --- 6. COPY EMAIL COORDINATES TO CLIPBOARD ---
+    // --- 7. COPY EMAIL COORDINATES TO CLIPBOARD ---
     const copyEmailBtn = document.getElementById('copyEmailBtn');
     const emailCoord = document.getElementById('emailCoord');
 
@@ -291,7 +281,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // --- 7. BACK TO TOP BUTTON ---
+    // --- 8. BACK TO TOP BUTTON ---
     const backToTopBtn = document.getElementById('backToTopBtn');
     if (backToTopBtn) {
         backToTopBtn.addEventListener('click', (e) => {
@@ -304,7 +294,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     console.log(
-        '%c MI. Portfolio %c 60fps Cyber Emerald & Obsidian Engine Active ',
+        '%c MI. Portfolio %c 60fps Native Momentum Engine Active ',
         'background: #10b981; color: #070a0f; font-weight: bold; border-radius: 4px; padding: 2px 6px;',
         'background: #0d121c; color: #34d399; border: 1px solid #10b981; border-radius: 4px; padding: 2px 6px;'
     );

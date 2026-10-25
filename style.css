@@ -1,6 +1,6 @@
 /* ==========================================================================
    MAHDI ISLAM | PROFESSIONAL PORTFOLIO
-   Design System: Cyber Emerald & Obsidian Glass (60fps Optimized)
+   Design System: Cyber Emerald & Obsidian Glass (60fps Ultra-Performance)
    Author: Mahdi Islam
    ========================================================================== */
 
@@ -10,13 +10,12 @@
     --bg-void: #070a0f;
     --bg-obsidian-surface: #0d121c;
     --bg-obsidian-elevated: #111827;
-    --bg-mobile-card: rgba(10, 14, 23, 0.96);
     
-    /* Glassmorphism Surfaces (Desktop) */
-    --bg-glass-card: rgba(15, 23, 42, 0.75);
-    --bg-glass-card-hover: rgba(22, 33, 58, 0.88);
-    --bg-glass-nav: rgba(7, 10, 15, 0.88);
-    --bg-glass-dock: rgba(13, 18, 28, 0.92);
+    /* High-Performance Obsidian Surfaces (Zero GPU Backdrop-Filter Penalty) */
+    --bg-card: rgba(13, 18, 28, 0.85);
+    --bg-card-hover: rgba(22, 33, 58, 0.92);
+    --bg-nav: rgba(7, 10, 15, 0.88);
+    --bg-dock: rgba(13, 18, 28, 0.94);
     
     /* Primary Accent: Cyber Mint / Emerald Glow */
     --accent-mint: #10b981;
@@ -24,8 +23,8 @@
     --accent-mint-dark: #059669;
     --mint-dim: rgba(16, 185, 129, 0.12);
     --mint-border: rgba(16, 185, 129, 0.35);
-    --mint-glow-shadow: 0 0 20px rgba(16, 185, 129, 0.28);
-    --mint-subtle-glow: 0 0 12px rgba(52, 211, 153, 0.18);
+    --mint-glow-shadow: 0 0 16px rgba(16, 185, 129, 0.25);
+    --mint-subtle-glow: 0 0 10px rgba(52, 211, 153, 0.15);
 
     /* Secondary Contrast: Golden Amber */
     --accent-amber: #f59e0b;
@@ -33,7 +32,6 @@
     --accent-amber-dark: #d97706;
     --amber-dim: rgba(245, 158, 11, 0.12);
     --amber-border: rgba(245, 158, 11, 0.35);
-    --amber-glow-shadow: 0 0 20px rgba(245, 158, 11, 0.25);
 
     /* Text Colors */
     --text-primary: #f8fafc;
@@ -41,9 +39,11 @@
     --text-muted: #64748b;
     --text-dark: #070a0f;
 
-    /* Glass Borders */
-    --border-glass: rgba(255, 255, 255, 0.08);
-    --border-glass-light: rgba(255, 255, 255, 0.14);
+    /* Crisp High-Performance Borders & Shadows */
+    --border-card: rgba(255, 255, 255, 0.08);
+    --border-card-light: rgba(255, 255, 255, 0.14);
+    --card-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+    --card-shadow-hover: 0 6px 20px rgba(0, 0, 0, 0.5);
     
     /* Typography */
     --font-heading: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
@@ -56,13 +56,9 @@
     --radius-lg: 20px;
     --radius-full: 9999px;
 
-    /* Optimized 60fps Transitions */
-    --trans-fast: 0.18s ease-out;
-    --trans-smooth: 0.28s cubic-bezier(0.16, 1, 0.3, 1);
-
-    /* Blur Defaults */
-    --glass-blur: blur(14px);
-    --nav-blur: blur(16px);
+    /* 60fps Micro-Transitions */
+    --trans-fast: 0.15s ease-out;
+    --trans-smooth: 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 /* --- 2. GLOBAL RESET & BASE STYLES --- */
@@ -72,14 +68,17 @@
     box-sizing: border-box;
 }
 
+/* Native Inertial Momentum Scrolling (Restored 100% Native Momentum) */
 html {
-    scroll-behavior: smooth;
     font-size: 16px;
     color-scheme: dark;
 }
 
 body {
-    background-color: var(--bg-void);
+    background: radial-gradient(circle at 10% 10%, rgba(16, 185, 129, 0.05) 0%, transparent 40%),
+                radial-gradient(circle at 90% 20%, rgba(245, 158, 11, 0.04) 0%, transparent 35%),
+                #070a0f;
+    background-attachment: fixed;
     color: var(--text-primary);
     font-family: var(--font-body);
     line-height: 1.65;
@@ -139,53 +138,6 @@ button {
     color: #ffffff;
 }
 
-/* --- 3. AMBIENT BACKGROUND & MESH GLOWS --- */
-.ambient-glow {
-    position: fixed;
-    border-radius: 50%;
-    pointer-events: none;
-    z-index: 0;
-    filter: blur(100px);
-    opacity: 0.35;
-    transform: translateZ(0);
-}
-
-.glow-top-left {
-    top: -80px;
-    left: -80px;
-    width: 480px;
-    height: 480px;
-    background: radial-gradient(circle, rgba(16, 185, 129, 0.2) 0%, transparent 70%);
-}
-
-.glow-top-right {
-    top: 15%;
-    right: -100px;
-    width: 500px;
-    height: 500px;
-    background: radial-gradient(circle, rgba(245, 158, 11, 0.15) 0%, transparent 70%);
-}
-
-.glow-bottom-left {
-    bottom: 5%;
-    left: 8%;
-    width: 520px;
-    height: 520px;
-    background: radial-gradient(circle, rgba(16, 185, 129, 0.12) 0%, transparent 70%);
-}
-
-.ambient-grid {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: radial-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px);
-    background-size: 36px 36px;
-    pointer-events: none;
-    z-index: 0;
-}
-
 /* Layout Container utility */
 main {
     position: relative;
@@ -229,7 +181,7 @@ main {
     line-height: 1.6;
 }
 
-/* --- 4. HEADER & STICKY NAVBAR --- */
+/* --- 3. HEADER & STICKY NAVBAR (ONLY PRESERVED BLUR) --- */
 .header {
     position: fixed;
     top: 0;
@@ -246,13 +198,13 @@ main {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background: var(--bg-glass-nav);
-    backdrop-filter: var(--nav-blur);
-    -webkit-backdrop-filter: var(--nav-blur);
-    border: 1px solid var(--border-glass);
+    background: var(--bg-nav);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid var(--border-card);
     border-radius: var(--radius-lg);
-    padding: 16px 24px; /* Exact requirement: 16px 24px on desktop */
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+    padding: 16px 24px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
 }
 
 .brand-logo {
@@ -353,7 +305,7 @@ main {
     font-weight: 600;
     background: var(--mint-dim);
     transition: var(--trans-smooth);
-    box-shadow: 0 0 14px rgba(16, 185, 129, 0.14);
+    box-shadow: 0 0 12px rgba(16, 185, 129, 0.12);
 }
 
 .btn-header-cta:hover {
@@ -400,7 +352,7 @@ main {
     transform: translateY(-7px) rotate(-45deg);
 }
 
-/* --- 5. HERO SECTION --- */
+/* --- 4. HERO SECTION --- */
 .hero-section {
     min-height: 100vh;
     display: flex;
@@ -523,8 +475,8 @@ main {
     gap: 7px;
     padding: 6px 14px;
     border-radius: var(--radius-sm);
-    background: var(--bg-glass-card);
-    border: 1px solid var(--border-glass);
+    background: var(--bg-card);
+    border: 1px solid var(--border-card);
     color: var(--text-secondary);
     font-size: 0.82rem;
     font-family: var(--font-mono);
@@ -566,8 +518,8 @@ main {
 
 .btn-primary:hover {
     background: var(--accent-mint-glow);
-    transform: translateY(-3px);
-    box-shadow: 0 0 25px rgba(52, 211, 153, 0.45);
+    transform: translateY(-2px);
+    box-shadow: 0 0 20px rgba(52, 211, 153, 0.4);
 }
 
 .btn-primary ion-icon {
@@ -584,24 +536,23 @@ main {
     gap: 10px;
     padding: 14px 28px;
     border-radius: var(--radius-md);
-    background: var(--bg-glass-card);
-    backdrop-filter: var(--glass-blur);
-    -webkit-backdrop-filter: var(--glass-blur);
-    border: 1px solid var(--border-glass-light);
+    background: var(--bg-card);
+    border: 1px solid var(--border-card-light);
     color: var(--text-primary);
     font-weight: 600;
     font-size: 0.98rem;
+    box-shadow: var(--card-shadow);
     transition: var(--trans-smooth);
 }
 
 .btn-secondary:hover {
     border-color: var(--mint-border);
     color: var(--accent-mint-glow);
-    transform: translateY(-3px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
+    transform: translateY(-2px);
+    box-shadow: var(--card-shadow-hover);
 }
 
-/* Hero Visual & Profile Frame */
+/* Hero Visual & Profile Frame (Zero Idle Overdraw) */
 .hero-visual {
     position: relative;
     display: flex;
@@ -613,22 +564,15 @@ main {
     position: relative;
     width: 340px;
     height: 340px;
-    transform: translateZ(0);
 }
 
+/* Static, High-Performance Gradient Ring */
 .frame-ambient-ring {
     position: absolute;
-    inset: -14px;
+    inset: -6px;
     border-radius: 50%;
-    background: conic-gradient(from 0deg, var(--accent-mint), var(--accent-amber), var(--accent-mint));
-    filter: blur(24px);
-    opacity: 0.45;
-    animation: spinRing 20s linear infinite;
-    transform: translateZ(0);
-}
-
-@keyframes spinRing {
-    to { transform: rotate(360deg); }
+    background: linear-gradient(135deg, rgba(16, 185, 129, 0.35), rgba(245, 158, 11, 0.25));
+    box-shadow: 0 0 35px rgba(16, 185, 129, 0.25);
 }
 
 .frame-border {
@@ -638,7 +582,7 @@ main {
     border-radius: 50%;
     padding: 5px;
     background: linear-gradient(135deg, var(--accent-mint), rgba(255,255,255,0.1), var(--accent-amber));
-    box-shadow: 0 0 30px rgba(0, 0, 0, 0.7);
+    box-shadow: 0 0 24px rgba(0, 0, 0, 0.7);
 }
 
 .profile-img {
@@ -649,7 +593,7 @@ main {
     background-color: var(--bg-obsidian-surface);
 }
 
-/* Micro Floating Badges */
+/* Static Micro Badges (Zero Idle Continuous Repaints) */
 .floating-badge {
     position: absolute;
     display: flex;
@@ -657,13 +601,10 @@ main {
     gap: 12px;
     padding: 10px 18px;
     border-radius: var(--radius-lg);
-    background: var(--bg-glass-card);
-    backdrop-filter: var(--glass-blur);
-    -webkit-backdrop-filter: var(--glass-blur);
-    border: 1px solid var(--border-glass-light);
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+    background: var(--bg-card);
+    border: 1px solid var(--border-card-light);
+    box-shadow: var(--card-shadow);
     z-index: 2;
-    animation: floatSlow 6s ease-in-out infinite alternate;
 }
 
 .badge-location {
@@ -674,12 +615,6 @@ main {
 .badge-focus {
     top: 15px;
     right: -25px;
-    animation-delay: -3s;
-}
-
-@keyframes floatSlow {
-    0% { transform: translateY(0); }
-    100% { transform: translateY(-8px); }
 }
 
 .badge-icon-box {
@@ -721,7 +656,7 @@ main {
     font-family: var(--font-mono);
 }
 
-/* --- 6. METRICS STRIP --- */
+/* --- 5. METRICS STRIP --- */
 .metrics-section {
     max-width: 1320px;
     margin: 20px auto 80px;
@@ -732,13 +667,11 @@ main {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 20px;
-    background: var(--bg-glass-card);
-    backdrop-filter: var(--glass-blur);
-    -webkit-backdrop-filter: var(--glass-blur);
-    border: 1px solid var(--border-glass);
+    background: var(--bg-card);
+    border: 1px solid var(--border-card);
     border-radius: var(--radius-lg);
     padding: 28px 32px;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+    box-shadow: var(--card-shadow);
 }
 
 .metric-card {
@@ -794,7 +727,7 @@ main {
     color: var(--text-muted);
 }
 
-/* --- 7. ABOUT & PHILOSOPHY BENTO --- */
+/* --- 6. ABOUT & PHILOSOPHY BENTO --- */
 .about-section {
     padding: 60px 6% 80px;
     max-width: 1320px;
@@ -808,21 +741,20 @@ main {
 }
 
 .bento-card {
-    background: var(--bg-glass-card);
-    backdrop-filter: var(--glass-blur);
-    -webkit-backdrop-filter: var(--glass-blur);
-    border: 1px solid var(--border-glass);
+    background: var(--bg-card);
+    border: 1px solid var(--border-card);
     border-radius: var(--radius-lg);
     padding: 34px;
     position: relative;
     overflow: hidden;
+    box-shadow: var(--card-shadow);
     transition: var(--trans-smooth);
 }
 
 .bento-card:hover {
     border-color: var(--mint-border);
-    transform: translateY(-3px);
-    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.4);
+    transform: translateY(-2px);
+    box-shadow: var(--card-shadow-hover);
 }
 
 .bento-wide {
@@ -831,7 +763,7 @@ main {
 
 .bento-terminal {
     grid-column: span 5;
-    background: rgba(10, 14, 23, 0.9);
+    background: rgba(10, 14, 23, 0.95);
     display: flex;
     flex-direction: column;
 }
@@ -903,7 +835,7 @@ main {
     display: flex;
     align-items: center;
     gap: 14px;
-    border-bottom: 1px solid var(--border-glass);
+    border-bottom: 1px solid var(--border-card);
     padding-bottom: 14px;
     margin-bottom: 16px;
 }
@@ -1009,6 +941,12 @@ main {
     text-shadow: 0 0 10px var(--accent-mint);
 }
 
+/* --- 7. MODERN RENDERING PRIMITIVES (OFFSCREEN MEMORY EFFICIENCY) --- */
+#skills, #portfolio, #contact {
+    content-visibility: auto;
+    contain-intrinsic-size: 1px 600px;
+}
+
 /* --- 8. DUAL-TIER SKILLS MATRIX --- */
 .skills-section {
     padding: 60px 6% 90px;
@@ -1023,23 +961,20 @@ main {
 }
 
 .tier-block {
-    background: var(--bg-glass-card);
-    backdrop-filter: var(--glass-blur);
-    -webkit-backdrop-filter: var(--glass-blur);
-    border: 1px solid var(--border-glass);
+    background: var(--bg-card);
+    border: 1px solid var(--border-card);
     border-radius: var(--radius-lg);
     padding: 36px;
     position: relative;
+    box-shadow: var(--card-shadow);
 }
 
 .tier-active {
     border-top: 2px solid var(--accent-mint);
-    box-shadow: 0 6px 20px -8px rgba(16, 185, 129, 0.2);
 }
 
 .tier-roadmap {
     border-top: 2px solid var(--accent-amber);
-    box-shadow: 0 6px 20px -8px rgba(245, 158, 11, 0.2);
 }
 
 .tier-header {
@@ -1086,12 +1021,10 @@ main {
     height: 6px;
     border-radius: 50%;
     background: var(--accent-mint-glow);
-    box-shadow: 0 0 6px var(--accent-mint-glow);
 }
 
 .radar-ping.amber {
     background: var(--accent-amber-glow);
-    box-shadow: 0 0 6px var(--accent-amber-glow);
 }
 
 .tier-title {
@@ -1134,19 +1067,20 @@ main {
 }
 
 .skill-card {
-    background: rgba(13, 18, 28, 0.75);
-    border: 1px solid var(--border-glass);
+    background: rgba(10, 14, 23, 0.85);
+    border: 1px solid var(--border-card);
     border-radius: var(--radius-md);
     padding: 24px;
     display: flex;
     flex-direction: column;
+    box-shadow: var(--card-shadow);
     transition: var(--trans-smooth);
     position: relative;
 }
 
 .skill-card:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
+    transform: translateY(-2px);
+    box-shadow: var(--card-shadow-hover);
 }
 
 .active-card:hover {
@@ -1235,7 +1169,7 @@ main {
     background: rgba(255, 255, 255, 0.04);
     padding: 3px 8px;
     border-radius: 4px;
-    border: 1px solid var(--border-glass);
+    border: 1px solid var(--border-card);
 }
 
 /* --- 9. FILTERABLE PROJECTS SHOWCASE --- */
@@ -1256,12 +1190,11 @@ main {
     flex-wrap: wrap;
     gap: 10px;
     list-style: none;
-    background: var(--bg-glass-card);
-    backdrop-filter: var(--glass-blur);
-    -webkit-backdrop-filter: var(--glass-blur);
-    border: 1px solid var(--border-glass);
+    background: var(--bg-card);
+    border: 1px solid var(--border-card);
     padding: 6px;
     border-radius: var(--radius-full);
+    box-shadow: var(--card-shadow);
 }
 
 .filter-btn {
@@ -1292,7 +1225,7 @@ main {
     font-size: 1rem;
 }
 
-/* Projects Grid - Zero Empty Cards */
+/* Projects Grid */
 .projects-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -1300,14 +1233,13 @@ main {
 }
 
 .project-card {
-    background: var(--bg-glass-card);
-    backdrop-filter: var(--glass-blur);
-    -webkit-backdrop-filter: var(--glass-blur);
-    border: 1px solid var(--border-glass);
+    background: var(--bg-card);
+    border: 1px solid var(--border-card);
     border-radius: var(--radius-lg);
     overflow: hidden;
     display: flex;
     flex-direction: column;
+    box-shadow: var(--card-shadow);
     transition: var(--trans-smooth);
     opacity: 1;
     transform: translateY(0);
@@ -1315,13 +1247,13 @@ main {
 
 .project-card:hover {
     border-color: var(--mint-border);
-    transform: translateY(-4px);
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.45), 0 0 16px rgba(16, 185, 129, 0.12);
+    transform: translateY(-3px);
+    box-shadow: var(--card-shadow-hover);
 }
 
 .project-card.fade-out {
     opacity: 0;
-    transform: scale(0.97);
+    transform: scale(0.98);
     pointer-events: none;
 }
 
@@ -1346,7 +1278,7 @@ main {
 }
 
 .project-card:hover .project-img {
-    transform: scale(1.04);
+    transform: scale(1.03);
 }
 
 .project-overlay {
@@ -1366,19 +1298,17 @@ main {
     font-size: 0.74rem;
     font-weight: 700;
     text-transform: uppercase;
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.35);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
 }
 
 .category-badge.mint {
-    background: rgba(7, 10, 15, 0.88);
+    background: rgba(7, 10, 15, 0.92);
     color: var(--accent-mint-glow);
     border: 1px solid var(--mint-border);
 }
 
 .category-badge.amber {
-    background: rgba(7, 10, 15, 0.88);
+    background: rgba(7, 10, 15, 0.92);
     color: var(--accent-amber-glow);
     border: 1px solid var(--amber-border);
 }
@@ -1512,7 +1442,7 @@ main {
     padding: 10px 18px;
     border-radius: var(--radius-sm);
     background: rgba(255, 255, 255, 0.04);
-    border: 1px solid var(--border-glass-light);
+    border: 1px solid var(--border-card-light);
     color: var(--text-primary);
     font-size: 0.88rem;
     font-weight: 600;
@@ -1539,15 +1469,14 @@ main {
 }
 
 .contact-info-panel {
-    background: var(--bg-glass-card);
-    backdrop-filter: var(--glass-blur);
-    -webkit-backdrop-filter: var(--glass-blur);
-    border: 1px solid var(--border-glass);
+    background: var(--bg-card);
+    border: 1px solid var(--border-card);
     border-radius: var(--radius-lg);
     padding: 36px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    box-shadow: var(--card-shadow);
 }
 
 .panel-header {
@@ -1577,8 +1506,8 @@ main {
     align-items: center;
     gap: 16px;
     padding: 14px 18px;
-    background: rgba(13, 18, 28, 0.7);
-    border: 1px solid var(--border-glass);
+    background: rgba(10, 14, 23, 0.8);
+    border: 1px solid var(--border-card);
     border-radius: var(--radius-md);
     transition: var(--trans-fast);
 }
@@ -1646,7 +1575,7 @@ main {
     justify-content: center;
     color: var(--text-secondary);
     background: rgba(255, 255, 255, 0.05);
-    border: 1px solid var(--border-glass);
+    border: 1px solid var(--border-card);
     font-size: 1.1rem;
     transition: var(--trans-fast);
     flex-shrink: 0;
@@ -1678,8 +1607,8 @@ main {
     gap: 10px;
     padding: 10px 14px;
     border-radius: var(--radius-sm);
-    background: rgba(13, 18, 28, 0.6);
-    border: 1px solid var(--border-glass);
+    background: rgba(10, 14, 23, 0.75);
+    border: 1px solid var(--border-card);
     color: var(--text-secondary);
     font-size: 0.88rem;
     font-weight: 500;
@@ -1701,12 +1630,11 @@ main {
 
 /* Contact Form Panel */
 .contact-form-panel {
-    background: var(--bg-glass-card);
-    backdrop-filter: var(--glass-blur);
-    -webkit-backdrop-filter: var(--glass-blur);
-    border: 1px solid var(--border-glass);
+    background: var(--bg-card);
+    border: 1px solid var(--border-card);
     border-radius: var(--radius-lg);
     padding: 38px;
+    box-shadow: var(--card-shadow);
 }
 
 .form-header {
@@ -1769,8 +1697,8 @@ main {
 
 .form-input, .form-textarea {
     width: 100%;
-    background: rgba(7, 10, 15, 0.7);
-    border: 1px solid var(--border-glass-light);
+    background: rgba(7, 10, 15, 0.75);
+    border: 1px solid var(--border-card-light);
     border-radius: var(--radius-sm);
     padding: 12px 16px;
     color: var(--text-primary);
@@ -1782,8 +1710,8 @@ main {
 
 .form-input:focus, .form-textarea:focus {
     border-color: var(--accent-mint);
-    box-shadow: 0 0 14px rgba(16, 185, 129, 0.2);
-    background: rgba(13, 18, 28, 0.9);
+    box-shadow: 0 0 12px rgba(16, 185, 129, 0.2);
+    background: rgba(10, 14, 23, 0.9);
 }
 
 .form-textarea {
@@ -1812,7 +1740,7 @@ main {
 .btn-submit:hover:not(:disabled) {
     background: var(--accent-mint-glow);
     transform: translateY(-2px);
-    box-shadow: 0 0 25px rgba(52, 211, 153, 0.45);
+    box-shadow: 0 0 20px rgba(52, 211, 153, 0.4);
 }
 
 .btn-submit:disabled {
@@ -1868,10 +1796,8 @@ main {
 
 /* --- 11. FOOTER --- */
 .footer {
-    border-top: 1px solid var(--border-glass);
-    background: rgba(7, 10, 15, 0.94);
-    backdrop-filter: var(--glass-blur);
-    -webkit-backdrop-filter: var(--glass-blur);
+    border-top: 1px solid var(--border-card);
+    background: rgba(7, 10, 15, 0.98);
     padding: 40px 6% 30px;
     position: relative;
     z-index: 10;
@@ -1905,7 +1831,7 @@ main {
     height: 8px;
     border-radius: 50%;
     background: var(--accent-mint-glow);
-    box-shadow: 0 0 8px var(--accent-mint-glow);
+    box-shadow: 0 0 6px var(--accent-mint-glow);
 }
 
 .btn-back-to-top {
@@ -1915,8 +1841,8 @@ main {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: var(--bg-glass-card);
-    border: 1px solid var(--border-glass);
+    background: var(--bg-card);
+    border: 1px solid var(--border-card);
     color: var(--accent-mint-glow);
     font-size: 1.2rem;
     transition: var(--trans-fast);
@@ -1926,12 +1852,12 @@ main {
     background: var(--accent-mint);
     color: var(--bg-void);
     box-shadow: var(--mint-glow-shadow);
-    transform: translateY(-3px);
+    transform: translateY(-2px);
 }
 
 .footer-divider {
     height: 1px;
-    background: var(--border-glass);
+    background: var(--border-card);
     margin-bottom: 24px;
 }
 
@@ -1973,11 +1899,11 @@ main {
     bottom: 18px;
     left: 50%;
     transform: translateX(-50%);
-    background: var(--bg-mobile-card);
-    border: 1px solid var(--border-glass-light);
+    background: var(--bg-dock);
+    border: 1px solid var(--border-card-light);
     border-radius: var(--radius-full);
     padding: 8px 16px;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.7);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
     z-index: 1000;
     gap: 6px;
     align-items: center;
@@ -2025,12 +1951,12 @@ main {
     padding: 12px 20px;
     border-radius: var(--radius-md);
     background: rgba(13, 18, 28, 0.96);
-    border: 1px solid var(--border-glass-light);
+    border: 1px solid var(--border-card-light);
     color: #ffffff;
     font-size: 0.9rem;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
-    animation: toastSlideIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-    transition: opacity 0.25s ease, transform 0.25s ease;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.45);
+    animation: toastSlideIn 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    transition: opacity 0.2s ease, transform 0.2s ease;
 }
 
 .toast.toast-mint {
@@ -2052,7 +1978,7 @@ main {
 @keyframes toastSlideIn {
     from {
         opacity: 0;
-        transform: translateY(16px) scale(0.96);
+        transform: translateY(12px) scale(0.96);
     }
     to {
         opacity: 1;
@@ -2060,7 +1986,7 @@ main {
     }
 }
 
-/* --- 14. RESPONSIVE MEDIA QUERIES & 60FPS OPTIMIZATIONS --- */
+/* --- 14. RESPONSIVE MEDIA QUERIES --- */
 
 /* Laptops & Standard Desktop (max-width: 1200px) */
 @media (max-width: 1200px) {
@@ -2123,10 +2049,10 @@ main {
         left: 0;
         width: 100%;
         background: rgba(10, 14, 23, 0.98);
-        border: 1px solid var(--border-glass-light);
+        border: 1px solid var(--border-card-light);
         border-radius: var(--radius-lg);
         padding: 24px;
-        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.7);
+        box-shadow: 0 10px 24px rgba(0, 0, 0, 0.6);
         z-index: 1001;
     }
     .nav-links-wrapper.open .nav-links {
@@ -2141,15 +2067,14 @@ main {
     }
 }
 
-/* Small Tablets & Large Phones (max-width: 768px) - 60FPS OPTIMIZATION ZONE */
+/* Small Tablets & Large Phones (max-width: 768px) */
 @media (max-width: 768px) {
-    /* Navbar breathing room & layout */
     .header {
-        padding: 12px 16px; /* Adequate breathing room from screen boundary */
+        padding: 12px 16px;
     }
     .navbar {
-        padding: 14px 20px; /* Exact requirement: 14px 20px on mobile */
-        justify-content: space-between; /* Neatly space logo and toggle */
+        padding: 14px 20px;
+        justify-content: space-between;
     }
     .brand-logo {
         gap: 10px;
@@ -2162,30 +2087,8 @@ main {
         font-size: 1.3rem;
     }
 
-    /* Hide desktop CTA on compact header to keep logo and toggle perfectly balanced */
     .nav-actions .btn-header-cta {
         display: none;
-    }
-
-    /* 60FPS ENGINE: Strip expensive backdrop-filter chaining and heavy shadows on mobile */
-    .bento-card,
-    .tier-block,
-    .project-card,
-    .contact-info-panel,
-    .contact-form-panel,
-    .metrics-grid,
-    .footer,
-    .btn-secondary {
-        backdrop-filter: none !important;
-        -webkit-backdrop-filter: none !important;
-        background: var(--bg-mobile-card) !important;
-        box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35) !important;
-    }
-
-    /* Ambient glow throttle on mobile */
-    .ambient-glow {
-        opacity: 0.18;
-        filter: blur(50px);
     }
 
     .hero-section {
@@ -2216,7 +2119,7 @@ main {
         left: 16px;
     }
     .footer {
-        padding-bottom: 95px; /* Ensures dock never overlaps footer content */
+        padding-bottom: 95px;
     }
     body {
         padding-bottom: 95px;
